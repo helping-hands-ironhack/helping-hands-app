@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+# Helping hands App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Client routes
+| Path                        | Component         | Permissions             | Behavior                                                                                                             |
+|-----------------------------|-------------------|-------------------------|----------------------------------------------------------------------------------------------------------------------|
+|"/"                          |HomePage           | public `<Route>`        | Home Page                                                                                                            |
+|"/signup"                    |SignupPage         | anon only `<AnonRoute>` | Choose if you are a host or a NGO, sign up form, link to login, navigate to Homepage after signup                    |
+|"/login"                     |LoginPage          | anon only `<AnonRoute>` | Login form, link to signup, navigate to Homepage after login                                                         |
+|"/feed"(Host)                |HostFeedPage       | private `<Route>`       | Check NGOs that are currently looking for hosts, see if you got any hosting request                                  |
+|"/users/:id"                 |UserProfilePage    | private `<Route>`       | See a user's profile. If it's yours, edit it or create a new accommodation                                           |
+|"/users/:id/edit"            |UserEditPage       | private `<Route>`       | Edit your host profile.                                                                                              |
+|"/ngo/:id"                   |NgoProfilePage     | private `<Route>`       | See an NGO profile. If it's yours, edit it or create a new pax                                                       |
+|"/ngo/:id/edit"              |NgoEditPage        | private `<Route>`       | Edit your NGO profile.                                                                                               |
+|"/accommodations/:id"        |AccDetailsPage     | private `<Route>`       | See an accommodation's details. If it's yours, edit it and check hosting requests. If you are an NGO, request hosting|
+|"/request-hosting/:id"       |HostReqPage        | private `<Route>`       | Choose between your current pax to assign them to the chosen accommodation                                           |
+|"/accommodations/create"     |AccCreatePage      | private `<Route>`       | Create a new accommodation that you can host                                                                         |
+|"/accommodations/:id/edit"   |AccEditPage        | private `<Route>`       | Edit one of your accommodations                                                                                      |
+|"/pax/create"                |PaxCreatePage      | private `<Route>`       | Create a new pax as an NGO                                                                                           |
+|"/pax/:id/edit"              |PaxEditPage        | private `<Route>`       | Edit one of your pax                                                                                                 |
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## API endpoints
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+| URL                      | HTTP verb | Request body| Action                     |
+|--------------------------|-----------|-------------|----------------------------|
+|"/api/users"              |get        |Empty        |Returns all users           |
+|"/api/users"              |post       |Json         |Creates a new user          |
+|"/api/users/:id"          |get        |Empty        |Returns one user            |
+|"/api/users/:id"          |put        |Json         |Updates user                |
+|"/api/ngo"                |get        |Empty        |Returns all ngo             |
+|"/api/ngo"                |post       |Json         |Creates a new ngo           |
+|"/api/ngo/:id"            |get        |Empty        |Returns one ngo             |
+|"/api/ngo/:id"            |put        |Json         |Updates ngo                 |
+|"/api/pax"                |get        |Empty        |Returns all pax             |
+|"/api/pax"                |post       |Json         |Creates a new pax           |
+|"/api/pax/:id"            |get        |Empty        |Returns one pax             |
+|"/api/pax/:id"            |put        |Json         |Updates pax                 |
+|"/api/accommodations"     |get        |Empty        |Returns all accommodation   |
+|"/api/accommodations"     |post       |Json         |Creates a new accommodation |
+|"/api/accommodations/:id" |get        |Empty        |Returns one accommodation   |
+|"/api/accommodations/:id" |put        |Json         |Updates accommodation       |
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Models
+```
+Host={
+    firstName: {type: string, required:true},
+    lastName: {type: string, required:true},
+    email: {type: string, required:true},
+    accommodations: [{type: Schema.Types.ObjectId, ref:'Accommodation'}]
+}
+```
 
-### `yarn build`
+```
+Accommodation={
+    capacity: {type: number, required: true},
+    rooms: {type: number, required: true},
+    pics: [{type: string, required: true}],
+    description: {type: string, required:true},
+    resquests: [{type: Schema.Types.ObjectId, ref:'Pax'}],
+    isHosting: {type: boolean, required:true},
+    currentGuests: {type: Schema.Types.ObjectId, ref:'Pax'}
+}
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+NGO={
+    name: {type: string, required:true},
+    email: {type: string, required:true},
+    cif: {type: string, required:true},
+    paxToHost:{type: Schema.Types.ObjectId, ref:'Pax'}
+}
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+Pax={
+    adults: {type: number, required: true}
+    children: {type: number}
+    ngo: {type: Schema.Types.ObjectId, ref:'Ngo'}
+}
+```
