@@ -44,7 +44,7 @@
 
 
 ## Models
-```
+```javascript
 Host={
     firstName: {type: string, required:true},
     lastName: {type: string, required:true},
@@ -53,7 +53,7 @@ Host={
 }
 ```
 
-```
+```javascript
 Accommodation={
     capacity: {type: number, required: true},
     rooms: {type: number, required: true},
@@ -65,7 +65,7 @@ Accommodation={
 }
 ```
 
-```
+```javascript
 NGO={
     name: {type: string, required:true},
     email: {type: string, required:true},
@@ -74,7 +74,7 @@ NGO={
 }
 ```
 
-```
+```javascript
 Pax={
     adults: {type: number, required: true}
     children: {type: number}
