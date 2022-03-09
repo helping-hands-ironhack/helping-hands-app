@@ -60,6 +60,3 @@ export default function App() {
     </div>
   );
 }
-
-
-const one = 1;
