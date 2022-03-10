@@ -1,10 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context/auth.context";
 import "./Navbar.css";
 import * as PATHS from "../../utils/paths";
 import * as CONSTS from "../../utils/consts";
 
 const Navbar = (props) => {
+
+  const {isLoggedIn, user, logOutUser} = useContext(AuthContext);
+
   return (
     <nav>
       <Link to={PATHS.HOMEPAGE} className="nav__projectName">
@@ -12,7 +17,7 @@ const Navbar = (props) => {
       </Link>
 
       <div className="nav__authLinks">
-        {props.user ? (
+        {isLoggedIn && (
           <>
             <Link to={PATHS.PROTECTEDPAGE} className="authLink">
               Protected Page
@@ -21,7 +26,9 @@ const Navbar = (props) => {
               Logout
             </button>
           </>
-        ) : (
+        )}
+        
+        {!isLoggedIn && (
           <>
             <Link to={PATHS.SIGNUPPAGE} className="authLink">
               Signup

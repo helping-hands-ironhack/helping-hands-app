@@ -1,10 +1,102 @@
 import React, { useState } from "react";
 import { signup } from "../services/auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./auth.css";
+import axios from 'axios';
 import * as PATHS from "../utils/paths";
 import * as USER_HELPERS from "../utils/userToken";
+const API_URL = 'http://localhost:5005';
 
+
+export default function Signup(props){
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [errorMessage, setErrorMessage] = useState(undefined);
+
+  const navigate = useNavigate();
+
+  const handleEmail = (e) => setEmail(e.target.value);
+  const handlePassword = (e) => setPassword(e.target.value);
+  const handlefirstName = (e) => setFirstName(e.target.value);
+  const handleLastName = (e) => setLastName(e.target.value);
+
+  const handleSignupSubmit = (e) => {
+    e.preventDefault();
+    const requestBody = {firstName, lastName, email, password}
+
+    axios
+    .post(`${API_URL}/api/auth/signup`, requestBody)
+    .then((__) => navigate('/login'))
+    .catch((error) => {
+      const errorDescription = error.response.data.message;
+      setErrorMessage(errorDescription);
+    })
+  };
+
+  return(
+    <div>
+      <h1>Sign Up</h1>
+      <form onSubmit={handleSignupSubmit} className="auth__form">
+        <label htmlFor="input-firstName">First name:</label>
+        <input
+          id="input-firstName"
+          type="text"
+          name="firstName"
+          value={firstName}
+          onChange={handlefirstName}
+          required
+        />
+        
+        <label htmlFor="input-lastName">Last name:</label>
+        <input
+          id="input-lastName"
+          type="text"
+          name="lastName"
+          value={lastName}
+          onChange={handleLastName}
+          required
+        />
+        
+        <label htmlFor="input-email">Your email:</label>
+        <input
+          id="input-email"
+          type="text"
+          name="email"
+          value={email}
+          onChange={handleEmail}
+          required
+        />
+
+        <label htmlFor="input-password">Password</label>
+        <input
+          id="input-password"
+          type="password"
+          name="password"
+          value={password}
+          onChange={handlePassword}
+          required
+          minLength="8"
+        />
+
+        {errorMessage && (
+          <div className="error-block">
+            <p>There was an error submiting the form:</p>
+            <p>{errorMessage}</p>
+          </div>
+        )}
+
+        <button className="button__submit" type="submit">
+          Sign up
+        </button>
+      </form>
+    </div>
+  );
+};
+
+/*
 export default function Signup({ authenticate }) {
   const [form, setForm] = useState({
     username: "",
@@ -80,4 +172,4 @@ export default function Signup({ authenticate }) {
       </form>
     </div>
   );
-}
+}*/
