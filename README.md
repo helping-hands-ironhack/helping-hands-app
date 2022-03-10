@@ -25,27 +25,37 @@
 
 | URL                      | HTTP verb | Request body| Action                     |
 |--------------------------|-----------|-------------|----------------------------|
-|"/api/users"              |get        |Empty        |Returns all users           |
-|"/api/users"              |post       |Json         |Creates a new user          |
-|"/api/users/:id"          |get        |Empty        |Returns one user            |
-|"/api/users/:id"          |put        |Json         |Updates user                |
-|"/api/ngo"                |get        |Empty        |Returns all ngo             |
-|"/api/ngo"                |post       |Json         |Creates a new ngo           |
-|"/api/ngo/:id"            |get        |Empty        |Returns one ngo             |
-|"/api/ngo/:id"            |put        |Json         |Updates ngo                 |
-|"/api/pax"                |get        |Empty        |Returns all pax             |
-|"/api/pax"                |post       |Json         |Creates a new pax           |
-|"/api/pax/:id"            |get        |Empty        |Returns one pax             |
-|"/api/pax/:id"            |put        |Json         |Updates pax                 |
-|"/api/accommodations"     |get        |Empty        |Returns all accommodation   |
-|"/api/accommodations"     |post       |Json         |Creates a new accommodation |
-|"/api/accommodations/:id" |get        |Empty        |Returns one accommodation   |
-|"/api/accommodations/:id" |put        |Json         |Updates accommodation       |
+|USER routes               |           |             |                            |
+|"/api/users"              |GET        |(empty)      |Returns all users           |
+|"/api/users"              |POST       |Json         |Creates a new user          |
+|"/api/users/:id"          |GET        |(empty)      |Returns one user            |
+|"/api/users/:id"          |PUT        |Json         |Updates user                |
+|"/api/users/:id"          |DELETE     |(empty)      |Deletes user                |
+|"/api/ngo"                |GET        |(empty)      |Returns all ngo             |
+|NGO routes                |           |             |                            |
+|"/api/ngo"                |POST       |Json         |Creates a new ngo           |
+|"/api/ngo/:id"            |GET        |(empty)      |Returns one ngo             |
+|"/api/ngo/:id"            |PUT        |Json         |Updates ngo                 |
+|"/api/ngo/:id"            |DELETE     |(empty)      |Deletes ngo                 |
+|PAX routes                |           |             |                            |
+|"/api/pax"                |GET        |(empty)      |Returns all pax             |
+|"/api/pax"                |POST       |Json         |Creates a new pax           |
+|"/api/pax/:id"            |GET        |(empty)      |Returns one pax             |
+|"/api/pax/:id"            |PUT        |Json         |Updates pax                 |
+|"/api/pax/:id"            |DELETE     |(empty)      |Deletes pax                 |
+|ACCOMMODATION routes      |           |             |                            |
+|"/api/accommodations"     |GET        |(empty)      |Returns all accommodation   |
+|"/api/accommodations"     |POST       |Json         |Creates a new accommodation |
+|"/api/accommodations/:id" |GET        |(empty)      |Returns one accommodation   |
+|"/api/accommodations/:id" |PUT        |Json         |Updates accommodation       |
+|"/api/accommodations/:id" |DELETE     |(empty)      |Deletes accommodation       |
 
 
 ## Models
+
+# Host model
 ```javascript
-Host={
+{
     firstName: {type: string, required:true},
     lastName: {type: string, required:true},
     email: {type: string, required:true},
@@ -53,8 +63,9 @@ Host={
 }
 ```
 
+# Accommodation model
 ```javascript
-Accommodation={
+{
     capacity: {type: number, required: true},
     rooms: {type: number, required: true},
     pics: [{type: string, required: true}],
@@ -65,8 +76,9 @@ Accommodation={
 }
 ```
 
+# NGO model
 ```javascript
-NGO={
+{
     name: {type: string, required:true},
     email: {type: string, required:true},
     cif: {type: string, required:true},
@@ -74,8 +86,9 @@ NGO={
 }
 ```
 
+# Pax model
 ```javascript
-Pax={
+{
     adults: {type: number, required: true}
     children: {type: number}
     ngo: {type: Schema.Types.ObjectId, ref:'Ngo'}
