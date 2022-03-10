@@ -1,35 +1,43 @@
 import React, { useState } from "react";
-import { login } from "../services/auth";
+import { signup } from "../services/auth";
 import { useNavigate } from "react-router-dom";
-import "./NgoSignup";
+import "./auth.css";
 import * as PATHS from "../utils/paths";
 import * as USER_HELPERS from "../utils/userToken";
 
-export default function LogIn({ authenticate }) {
+export default function hostSignup({ authenticate }) {
   const [form, setForm] = useState({
-    username: "",
-    password: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: ""
   });
-  const { username, password } = form;
+  const { firstName, lastName, email,  password } = form;
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   function handleInputChange(event) {
     const { name, value } = event.target;
-
     return setForm({ ...form, [name]: value });
   }
 
   function handleFormSubmission(event) {
     event.preventDefault();
     const credentials = {
-      username,
-      password,
+      firstName,
+      lastName,
+      email,
+      password
     };
-    login(credentials).then((res) => {
+    signup(credentials).then((res) => {
       if (!res.status) {
-        return setError({ message: "Invalid credentials" });
+        // unsuccessful signup
+        console.error("Signup was unsuccessful: ", res);
+        return setError({
+          message: "Signup was unsuccessful! Please check the console.",
+        });
       }
+      // successful signup
       USER_HELPERS.setUserToken(res.data.accessToken);
       authenticate(res.data.user);
       navigate(PATHS.HOMEPAGE);
@@ -38,29 +46,47 @@ export default function LogIn({ authenticate }) {
 
   return (
     <div>
-      <h1>Log In</h1>
-      <form onSubmit={handleFormSubmission} className="signup__form">
-        <label htmlFor="input-username">Username</label>
+      <h1>Sign Up as a host</h1>
+      <form onSubmit={handleFormSubmission} className="auth__form">
+        <label htmlFor="input-firstname">First Name</label>
         <input
-          id="input-username"
+          id="input-firstname"
           type="text"
-          name="username"
-          placeholder="username"
-          value={username}
+          name="firstname"
+          value={firstName}
           onChange={handleInputChange}
           required
         />
 
+        <label htmlFor="input-lastname">Last Name</label>
+        <input
+          id="input-lastname"
+          type="text"
+          name="lastname"
+          value={lastName}
+          onChange={handleInputChange}
+          required
+        />
+
+        <label htmlFor="input-email">E-mail</label>
+        <input
+          id="input-email"
+          type="email"
+          name="email"
+          value={email}
+          onChange={handleInputChange}
+          required
+        />
+        
         <label htmlFor="input-password">Password</label>
         <input
           id="input-password"
           type="password"
           name="password"
-          placeholder="Password"
           value={password}
           onChange={handleInputChange}
           required
-          minLength="8"
+          minLength="4"
         />
 
         {error && (
