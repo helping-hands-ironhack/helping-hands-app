@@ -3,6 +3,8 @@ import axios from 'axios';
 import { login } from "../services/auth";
 import { Link, useNavigate } from "react-router-dom";
 import "./Signup";
+import { useNavigate } from "react-router-dom";
+import "./NgoSignup";
 import * as PATHS from "../utils/paths";
 import * as USER_HELPERS from "../utils/userToken";
 import { AuthContext } from "../context/auth.context";
