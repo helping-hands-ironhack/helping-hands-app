@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
 import { signup } from "../services/auth";
 import { Link, useNavigate } from "react-router-dom";
 import "./auth.css";
@@ -8,7 +9,7 @@ import * as USER_HELPERS from "../utils/userToken";
 const API_URL = 'http://localhost:5005';
 
 
-export default function Signup(props){
+export default function NgoSignup(props){
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -29,7 +30,7 @@ export default function Signup(props){
     console.log(requestBody);
 
     axios
-    .post(`${API_URL}/api/auth/signup`, requestBody)
+    .post(`${API_URL}/api/auth/ngo/signup`, requestBody)
     .then((__) => navigate('/login'))
     .catch((error) => {
       const errorDescription = error.response.data.message;

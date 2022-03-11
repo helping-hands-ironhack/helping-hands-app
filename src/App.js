@@ -6,6 +6,7 @@ import { getLoggedIn, logout } from "./services/auth";
 import routes from "./config/routes";
 import * as USER_HELPERS from "./utils/userToken";
 import { AuthContext } from "./context/auth.context";
+import ngoSignup from "./pages/NgoSignup";
 
 /*
 export default function App() {
