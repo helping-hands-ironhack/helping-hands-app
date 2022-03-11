@@ -30,6 +30,7 @@ export default function LogIn(props){
     .then((response) => {
       console.log('JWT Token', response.data.authToken);
       storeToken(response.data.authToken);
+      authenticateUser();
       navigate('/');
     })
     .catch(error => {
