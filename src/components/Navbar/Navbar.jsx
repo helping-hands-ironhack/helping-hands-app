@@ -8,7 +8,14 @@ import * as CONSTS from "../../utils/consts";
 
 const Navbar = (props) => {
 
-  const {isLoggedIn, user, logOutUser} = useContext(AuthContext);
+  const {isLoggedIn, user} = useContext(AuthContext);
+
+  let isNgo;
+  let isHost;
+  if (user) {
+    isNgo = user.isNgo;
+    isHost = !user.isNgo;
+  }
 
   return (
     <nav>
@@ -18,14 +25,23 @@ const Navbar = (props) => {
 
       <div className="nav__authLinks">
         {isLoggedIn && (
-          <>
+          isNgo ? <>
+            <h1>THIS IS THE NGO NAVBAR</h1>
             <Link to={PATHS.PROTECTEDPAGE} className="authLink">
               Protected Page
             </Link>
             <button className="nav-logoutbtn" onClick={props.handleLogout}>
               Logout
             </button>
-          </>
+          </> : <>
+            <h1>THIS IS THE HOST NAVBAR</h1>
+            <Link to={PATHS.PROTECTEDPAGE} className="authLink">
+              Protected Page
+            </Link>
+            <button className="nav-logoutbtn" onClick={props.handleLogout}>
+              Logout
+            </button>
+          </> 
         )}
         
         {!isLoggedIn && (
