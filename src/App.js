@@ -10,7 +10,7 @@ import ngoSignup from "./pages/NgoSignup";
 
 import HomePage from "./pages/HomePage";
 import PreSignup from './pages/PreSignup';
-import HostSignup from './pages/HostSignup';
+import Signup from './pages/Signup';
 import NgoSignup from './pages/NgoSignup';
 import LogIn from "./pages/LogIn";
 import HostPage from "./pages/HostPage";
@@ -33,7 +33,7 @@ export default function App() {
 
         <Route path='/' element={<HomePage />} />
         <Route path='/auth/signup' element={<PreSignup />} />
-        <Route path='/auth/host/signup' element={<HostSignup />} />
+        <Route path='/auth/host/signup' element={<Signup />} />
         <Route path='/auth/ngo/signup' element={<NgoSignup />} />
         <Route path='/auth/login' element={<LogIn />} />
         <Route path='/users/:id'  element={<HostPage user={user} />} />
