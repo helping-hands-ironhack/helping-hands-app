@@ -99,7 +99,10 @@ export default function Signup(props){
 
 /*
 export default function Signup({ authenticate }) {
+<<<<<<< HEAD
 export default function ngoSignup({ authenticate }) {
+=======
+>>>>>>> 275761bd26aec576e270fdeeda77d3603b9150bd
   const [form, setForm] = useState({
     username: "",
     email: "",
