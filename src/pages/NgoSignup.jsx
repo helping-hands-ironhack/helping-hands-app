@@ -8,7 +8,7 @@ import * as USER_HELPERS from "../utils/userToken";
 const API_URL = 'http://localhost:5005';
 
 
-export default function Signup(props){
+export default function NgoSignup(props){
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
