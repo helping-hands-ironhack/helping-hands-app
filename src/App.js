@@ -13,8 +13,10 @@ import PreSignup from './pages/PreSignup';
 import HostSignup from './pages/HostSignup';
 import NgoSignup from './pages/NgoSignup';
 import LogIn from "./pages/LogIn";
+import HostPage from "./pages/HostPage";
 
 export default function App() {
+  const getUserToken = localStorage.getItem('authToken');
 
   const { isLoading, user, authenticateUser, logOutUser } = useContext(AuthContext);
 
@@ -34,6 +36,7 @@ export default function App() {
         <Route path='/auth/host/signup' element={<HostSignup />} />
         <Route path='/auth/ngo/signup' element={<NgoSignup />} />
         <Route path='/auth/login' element={<LogIn />} />
+        <Route path='/users/:id'  element={<HostPage user={user} />} />
 
       </Routes>
     </div>
