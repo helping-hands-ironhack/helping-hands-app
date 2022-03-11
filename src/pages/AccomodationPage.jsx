@@ -21,7 +21,49 @@ export default function AddAccomodation(props) {
 
         axios
             .post(`${API_URL}/api/accomodations`, requestBody)
-            .populate("User")
-            .populate("Pax")
+            .populate("owner")
+            .populate("requests")
+            .populate("currentGuests")
+            .then(() => navigate("/profile"))
+            .catch((error) => {
+                const errorDescription = error.response.data.message;
+                setErrorMessage(errorDescription);
+            })
     }
+
+    return (
+        <div>
+            <h1>Register an Accomodation</h1>
+            <form onSubmit={handleSubmit} className="auth__form">
+            <label htmlFor="input-firstName">Capacity:</label>
+            <input
+            id="input-capacity"
+            type="number"
+            name="capacity"
+            value={capacity}
+            onChange={handleCapacity}
+            required
+        />
+            <label htmlFor="input-pics">Pics:</label>
+            <input
+            id="input-pics"
+            type="file"
+            name="pics"
+            value={pics}
+            onChange={handlePics}
+            required
+        />
+
+            <label htmlFor="input-description">Description:</label>
+            <input
+            id="input-description"
+            type="textarea"
+            name="description"
+            value={description}
+            onChange={handleDescription}
+            required
+        />
+            </form>
+        </div>
+    )
 }
