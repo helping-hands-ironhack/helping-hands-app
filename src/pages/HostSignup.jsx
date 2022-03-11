@@ -5,16 +5,16 @@ import "./auth.css";
 import * as PATHS from "../utils/paths";
 import * as USER_HELPERS from "../utils/userToken";
 
-export default function hostSignup({ authenticate }) {
+export default function HostSignup({ authenticate }) {
+  const { firstName, lastName, email,  password } = form;
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
     email: "",
     password: ""
   });
-  const { firstName, lastName, email,  password } = form;
-  const [error, setError] = useState(null);
-  const navigate = useNavigate();
 
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -102,4 +102,4 @@ export default function hostSignup({ authenticate }) {
       </form>
     </div>
   );
-}
+};

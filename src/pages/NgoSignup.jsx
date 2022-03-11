@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
 import { signup } from "../services/auth";
 import { Link, useNavigate } from "react-router-dom";
 import "./auth.css";
@@ -8,28 +9,28 @@ import * as USER_HELPERS from "../utils/userToken";
 const API_URL = 'http://localhost:5005';
 
 
-export default function Signup(props){
+export default function NgoSignup(props){
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  const [name, setName] = useState('');
+  const [cif, setCif] = useState('');
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
-  const handlefirstName = (e) => setFirstName(e.target.value);
-  const handleLastName = (e) => setLastName(e.target.value);
+  const handleName = (e) => setName(e.target.value);
+  const handleCif = (e) => setCif(e.target.value);
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
-    const requestBody = {firstName, lastName, email, password}
+    const requestBody = {name, cif, email, password}
     console.log(requestBody);
 
     axios
-    .post(`${API_URL}/api/auth/signup`, requestBody)
+    .post(`${API_URL}/api/auth/ngo/signup`, requestBody)
     .then((__) => navigate('/login'))
     .catch((error) => {
       const errorDescription = error.response.data.message;
@@ -39,29 +40,29 @@ export default function Signup(props){
 
   return(
     <div>
-      <h1>Sign Up</h1>
+      <h1>Sign Up as an NGO</h1>
       <form onSubmit={handleSignupSubmit} className="auth__form">
-        <label htmlFor="input-firstName">First name:</label>
+        <label htmlFor="input-name">Organization name:</label>
         <input
-          id="input-firstName"
+          id="input-name"
           type="text"
-          name="firstName"
-          value={firstName}
-          onChange={handlefirstName}
+          name="name"
+          value={name}
+          onChange={handleName}
           required  
         />
         
-        <label htmlFor="input-lastName">Last name:</label>
+        <label htmlFor="input-cif">CIF:</label>
         <input
-          id="input-lastName"
+          id="input-cif"
           type="text"
-          name="lastName"
-          value={lastName}
-          onChange={handleLastName}
+          name="cif"
+          value={cif}
+          onChange={handleCif}
           required
         />
         
-        <label htmlFor="input-email">Your email:</label>
+        <label htmlFor="input-email">Email:</label>
         <input
           id="input-email"
           type="text"
@@ -100,9 +101,12 @@ export default function Signup(props){
 /*
 export default function Signup({ authenticate }) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 export default function ngoSignup({ authenticate }) {
 =======
 >>>>>>> 275761bd26aec576e270fdeeda77d3603b9150bd
+=======
+>>>>>>> 01023a95132b7c78ed99d52e7f2e43f34882f501
   const [form, setForm] = useState({
     username: "",
     email: "",
