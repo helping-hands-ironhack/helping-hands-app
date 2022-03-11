@@ -8,6 +8,7 @@ import * as USER_HELPERS from "./utils/userToken";
 import { AuthContext } from "./context/auth.context";
 
 import HomePage from "./pages/HomePage";
+import PreSignup from './pages/PreSignup';
 import HostSignup from './pages/HostSignup';
 import NgoSignup from './pages/NgoSignup';
 import LogIn from "./pages/LogIn";
@@ -28,6 +29,7 @@ export default function App() {
         ))}*/}
 
         <Route path='/' element={<HomePage />} />
+        <Route path='/auth/signup' element={<PreSignup />} />
         <Route path='/auth/host/signup' element={<HostSignup />} />
         <Route path='/auth/ngo/signup' element={<NgoSignup />} />
         <Route path='/auth/login' element={<LogIn />} />

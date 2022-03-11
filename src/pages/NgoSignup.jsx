@@ -39,7 +39,7 @@ export default function Signup(props){
 
   return(
     <div>
-      <h1>Sign Up</h1>
+      <h1>Sign Up as an NGO</h1>
       <form onSubmit={handleSignupSubmit} className="auth__form">
         <label htmlFor="input-firstName">First name:</label>
         <input
