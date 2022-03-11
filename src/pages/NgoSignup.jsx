@@ -101,9 +101,11 @@ export default function Signup(props){
 export default function Signup({ authenticate }) {
   const [form, setForm] = useState({
     username: "",
-    password: "",
+    email: "",
+    cif: "",
+    password: ""
   });
-  const { username, password } = form;
+  const { username, password, email, cif } = form;
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -116,7 +118,9 @@ export default function Signup({ authenticate }) {
     event.preventDefault();
     const credentials = {
       username,
-      password,
+      email,
+      cif,
+      password
     };
     signup(credentials).then((res) => {
       if (!res.status) {
@@ -135,29 +139,47 @@ export default function Signup({ authenticate }) {
 
   return (
     <div>
-      <h1>Sign Up</h1>
+      <h1>Sign Up as NGO</h1>
       <form onSubmit={handleFormSubmission} className="auth__form">
-        <label htmlFor="input-username">Username</label>
+        <label htmlFor="input-ngoname">NGO Name</label>
         <input
-          id="input-username"
+          id="input-ngoname"
           type="text"
-          name="username"
-          placeholder="Text"
+          name="ngoname"
           value={username}
           onChange={handleInputChange}
           required
         />
 
+        <label htmlFor="input-email">E-mail</label>
+        <input
+          id="input-email"
+          type="email"
+          name="email"
+          value={email}
+          onChange={handleInputChange}
+          required
+        />
+
+        <label htmlFor="input-cif">CIF</label>
+        <input
+          id="input-cif"
+          type="text"
+          name="text"
+          value={cif}
+          onChange={handleInputChange}
+          required
+        />
+        
         <label htmlFor="input-password">Password</label>
         <input
           id="input-password"
           type="password"
           name="password"
-          placeholder="Password"
           value={password}
           onChange={handleInputChange}
           required
-          minLength="8"
+          minLength="4"
         />
 
         {error && (
