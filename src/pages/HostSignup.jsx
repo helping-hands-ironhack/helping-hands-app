@@ -102,4 +102,4 @@ export default function HostSignup({ authenticate }) {
       </form>
     </div>
   );
-}
+};
