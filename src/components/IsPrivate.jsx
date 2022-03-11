@@ -9,7 +9,7 @@ function IsPrivate( { children } ) {
   if (isLoading) return <p>Loading ...</p>;
 
   if (!isLoggedIn) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/auth/login" />;
   } else {
     return children;
   };

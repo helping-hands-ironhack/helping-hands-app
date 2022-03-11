@@ -5,7 +5,7 @@ import "./auth.css";
 import * as PATHS from "../utils/paths";
 import * as USER_HELPERS from "../utils/userToken";
 
-export default function hostSignup({ authenticate }) {
+export default function HostSignup({ authenticate }) {
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -102,4 +102,4 @@ export default function hostSignup({ authenticate }) {
       </form>
     </div>
   );
-}
+};
