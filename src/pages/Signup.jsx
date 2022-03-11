@@ -26,6 +26,7 @@ export default function Signup(props){
   const handleSignupSubmit = (e) => {
     e.preventDefault();
     const requestBody = {firstName, lastName, email, password}
+    console.log(requestBody);
 
     axios
     .post(`${API_URL}/api/auth/signup`, requestBody)
@@ -47,7 +48,7 @@ export default function Signup(props){
           name="firstName"
           value={firstName}
           onChange={handlefirstName}
-          required
+          required  
         />
         
         <label htmlFor="input-lastName">Last name:</label>
