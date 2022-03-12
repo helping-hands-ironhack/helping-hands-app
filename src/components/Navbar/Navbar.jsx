@@ -11,11 +11,17 @@ const Navbar = (props) => {
 
   const {isLoggedIn, user, logOutUser} = useContext(AuthContext)
   const [userInfo, setUserInfo] = useState("")
-  
-  console.log(props);
+  let isNgo;
+  let isHost;
+
   useEffect(() => {                          
     setUserInfo(user)
   }, [user] );
+  
+  console.log(user);
+  if (user) {
+    isNgo = (user.isNgo);
+  }
   
   return (
     <nav>
@@ -25,6 +31,16 @@ const Navbar = (props) => {
 
       <div className="nav__authLinks">
         {isLoggedIn && (
+          isNgo?
+          <>
+            <Link to={`/users/`} className="authLink">
+              My NGO profile
+            </Link>
+            <button className="nav-logoutbtn" onClick={props.handleLogout}>
+              Logout
+            </button>
+          </>
+          :
           <>
             <Link to={`/users/`} className="authLink">
               My profile

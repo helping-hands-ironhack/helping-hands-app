@@ -2,9 +2,12 @@ import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function AccommodationPage(props) {
     const [accData, setAccData] = useState("")
+
+    const navigate = useNavigate();
 
     const { id } = useParams()
 
@@ -17,12 +20,14 @@ export default function AccommodationPage(props) {
 
     }, []);
 
-    function handleDelete(id){
+    function handleDelete(e) {
+        e.preventDefault()
         axios
             .delete(`${process.env.REACT_APP_SERVER_URL}/accommodations/${id}`)
             .then((response) => {
                 setAccData(response.data)
-            });
+            })
+            .then((__) => navigate(`/users/${props.user._id}`))
     }
 
     return (
@@ -31,7 +36,7 @@ export default function AccommodationPage(props) {
             <h3>{accData.description}</h3>
             <p>Rooms: {accData.rooms}</p>
             <p>Capacity for {accData.capacity} pax</p>
-            <button onClick={handleDelete(accData._id)}>Delete accommodation</button>
+            <button onClick={handleDelete}>Delete accommodation</button>
         </div>
     )
 }

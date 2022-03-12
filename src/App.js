@@ -22,6 +22,7 @@ export default function App() {
 
   const { isLoading, user, authenticateUser, logOutUser } = useContext(AuthContext);
 
+  
   if (isLoading) {
     return <LoadingComponent />;
   }
