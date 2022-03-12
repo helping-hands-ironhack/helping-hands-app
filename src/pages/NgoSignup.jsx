@@ -100,6 +100,13 @@ export default function NgoSignup(props){
 
 /*
 export default function Signup({ authenticate }) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+export default function ngoSignup({ authenticate }) {
+=======
+>>>>>>> 275761bd26aec576e270fdeeda77d3603b9150bd
+=======
+>>>>>>> 01023a95132b7c78ed99d52e7f2e43f34882f501
   const [form, setForm] = useState({
     username: "",
     email: "",
