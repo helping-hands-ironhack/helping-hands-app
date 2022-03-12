@@ -30,7 +30,7 @@ export default function LogIn(props){
       storeToken(response.data.authToken);
       authenticateUser();
       navigate('/');
-      window.location.reload()
+      //window.location.reload()
     })
     .catch(error => {
       const errorDescription = error.response.data.message;

@@ -34,7 +34,7 @@ const Navbar = (props) => {
       </Link>
 
       <div className="nav__authLinks">
-        {isLoggedIn && (
+        {(isLoggedIn && user && user._id) && (
           isNgo?
           <>
             <Link to={`/users/`} className="authLink">
