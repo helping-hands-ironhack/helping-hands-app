@@ -22,7 +22,12 @@ export default function App() {
 
   const { isLoading, user, authenticateUser, logOutUser } = useContext(AuthContext);
 
-  
+  useEffect(() => {
+    if (getUserToken) {
+      return
+    }
+  })
+
   if (isLoading) {
     return <LoadingComponent />;
   }
@@ -39,9 +44,9 @@ export default function App() {
         <Route path='/auth/host/signup' element={<Signup />} />
         <Route path='/auth/ngo/signup' element={<NgoSignup />} />
         <Route path='/auth/login' element={<LogIn />} />
-        <Route path='/users/:id'  element={<HostPage user={user} />} />
-        <Route path='/accommodation/:id'  element={<AccommodationPage user={user} />} />
-        <Route path='/users/:id/accommodations/create'  element={<AddAccommodation user={user} />} />
+        <Route path='/users/:id' element={<HostPage user={user} />} />
+        <Route path='/accommodation/:id' element={<AccommodationPage user={user} />} />
+        <Route path='/users/:id/accommodations/create' element={<AddAccommodation user={user} />} />
 
       </Routes>
     </div>

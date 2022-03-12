@@ -28,7 +28,9 @@ export default function LogIn(props){
     .post(`${process.env.REACT_APP_SERVER_URL}/auth/login`, requestBody)
     .then((response) => {
       storeToken(response.data.authToken);
+      authenticateUser();
       navigate('/');
+      window.location.reload()
     })
     .catch(error => {
       const errorDescription = error.response.data.message;

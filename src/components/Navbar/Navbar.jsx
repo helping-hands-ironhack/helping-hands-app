@@ -6,23 +6,27 @@ import axios from "axios";
 import "./Navbar.css";
 import * as PATHS from "../../utils/paths";
 import * as CONSTS from "../../utils/consts";
+import LoadingComponent from "../Loading";
 
 const Navbar = (props) => {
 
-  const {isLoggedIn, user, logOutUser} = useContext(AuthContext)
+  const {isLoggedIn, user, logOutUser, authenticateUser,} = useContext(AuthContext)
   const [userInfo, setUserInfo] = useState("")
+  const [isLoading, setIsLoading] = useState(true)
   let isNgo;
   let isHost;
 
   useEffect(() => {                          
-    setUserInfo(user)
-  }, [user] );
+    authenticateUser()
+    setIsLoading(false)
+  },[]);
   
-  console.log(user);
   if (user) {
     isNgo = (user.isNgo);
   }
-  
+  if (isLoading) {
+    return <LoadingComponent />;
+  }
   return (
     <nav>
       <Link to={PATHS.HOMEPAGE} className="nav__projectName">
@@ -42,7 +46,7 @@ const Navbar = (props) => {
           </>
           :
           <>
-            <Link to={`/users/`} className="authLink">
+            <Link to={`/users/${user._id}`} className="authLink">
               My profile
             </Link>
             <button className="nav-logoutbtn" onClick={props.handleLogout}>
