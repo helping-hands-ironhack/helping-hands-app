@@ -6,7 +6,6 @@ import { Link, useNavigate } from "react-router-dom";
 import * as PATHS from "../utils/paths";
 import * as USER_HELPERS from "../utils/userToken";
 import { AuthContext } from "../context/auth.context";
-const API_URL='http://localhost:5005';
 
 export default function LogIn(props){
 
@@ -26,12 +25,12 @@ export default function LogIn(props){
     const requestBody = { email, password };
 
     axios
-    .post(`${API_URL}/api/auth/login`, requestBody)
+    .post(`${process.env.REACT_APP_SERVER_URL}/auth/login`, requestBody)
     .then((response) => {
-      console.log('JWT Token', response.data.authToken);
       storeToken(response.data.authToken);
       authenticateUser();
       navigate('/');
+      //window.location.reload()
     })
     .catch(error => {
       const errorDescription = error.response.data.message;
