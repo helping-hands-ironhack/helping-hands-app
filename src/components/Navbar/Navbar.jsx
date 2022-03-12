@@ -1,21 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/auth.context";
+import axios from "axios";
 import "./Navbar.css";
 import * as PATHS from "../../utils/paths";
 import * as CONSTS from "../../utils/consts";
 
 const Navbar = (props) => {
 
-  const {isLoggedIn, user} = useContext(AuthContext);
+  const { isLoggedIn, user, logOutUser } = useContext(AuthContext)
+  const [userInfo, setUserInfo] = useState("")
 
-  let isNgo;
-  let isHost;
-  if (user) {
-    isNgo = user.isNgo;
-    isHost = !user.isNgo;
-  }
+  console.log(props);
+  useEffect(() => {
+    setUserInfo(user)
+  }, [user]);
 
   return (
     <nav>
@@ -25,25 +25,21 @@ const Navbar = (props) => {
 
       <div className="nav__authLinks">
         {isLoggedIn && (
-          isNgo ? <>
-            <h1>THIS IS THE NGO NAVBAR</h1>
-            <Link to={PATHS.PROTECTEDPAGE} className="authLink">
-              Protected Page
+          <>
+            <Link to={`/users/`} className="authLink">
+              My profile
             </Link>
             <button className="nav-logoutbtn" onClick={props.handleLogout}>
               Logout
             </button>
-          </> : <>
-            <h1>THIS IS THE HOST NAVBAR</h1>
-            <Link to={PATHS.PROTECTEDPAGE} className="authLink">
-              Protected Page
-            </Link>
+
             <button className="nav-logoutbtn" onClick={props.handleLogout}>
               Logout
             </button>
-          </> 
+          </>
+
         )}
-        
+
         {!isLoggedIn && (
           <>
             <Link to={PATHS.SIGNUPPAGE} className="authLink">

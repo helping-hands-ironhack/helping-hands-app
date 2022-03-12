@@ -10,19 +10,20 @@ import ngoSignup from "./pages/NgoSignup";
 
 import HomePage from "./pages/HomePage";
 import PreSignup from './pages/PreSignup';
-import HostSignup from './pages/HostSignup';
+import Signup from './pages/Signup';
 import NgoSignup from './pages/NgoSignup';
 import LogIn from "./pages/LogIn";
 import HostPage from "./pages/HostPage";
+import AddAccomodation from "./pages/AccomodationPage";
 
 export default function App() {
   const getUserToken = localStorage.getItem('authToken');
 
   const { isLoading, user, authenticateUser, logOutUser } = useContext(AuthContext);
 
-  // if (isLoading) {
-  //   return <LoadingComponent />;
-  // }
+  if (isLoading) {
+    return <LoadingComponent />;
+  }
   return (
     <div className="App">
       <Navbar handleLogout={logOutUser} />
@@ -33,10 +34,11 @@ export default function App() {
 
         <Route path='/' element={<HomePage />} />
         <Route path='/auth/signup' element={<PreSignup />} />
-        <Route path='/auth/host/signup' element={<HostSignup />} />
+        <Route path='/auth/host/signup' element={<Signup />} />
         <Route path='/auth/ngo/signup' element={<NgoSignup />} />
         <Route path='/auth/login' element={<LogIn />} />
         <Route path='/users/:id'  element={<HostPage user={user} />} />
+        <Route path='/users/:id/accommodations/create'  element={<AddAccomodation user={user} />} />
 
       </Routes>
     </div>
