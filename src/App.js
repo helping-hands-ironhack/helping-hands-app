@@ -14,15 +14,23 @@ import Signup from './pages/Signup';
 import NgoSignup from './pages/NgoSignup';
 import LogIn from "./pages/LogIn";
 import HostPage from "./pages/HostPage";
+import AddAccommodation from "./pages/AddAccommodationPage";
+import AccommodationPage from "./pages/AccommodationPage";
 
 export default function App() {
   const getUserToken = localStorage.getItem('authToken');
 
   const { isLoading, user, authenticateUser, logOutUser } = useContext(AuthContext);
 
-  // if (isLoading) {
-  //   return <LoadingComponent />;
-  // }
+  useEffect(() => {
+    if (getUserToken) {
+      return
+    }
+  })
+
+  if (isLoading) {
+    return <LoadingComponent />;
+  }
   return (
     <div className="App">
       <Navbar handleLogout={logOutUser} />
@@ -36,7 +44,9 @@ export default function App() {
         <Route path='/auth/host/signup' element={<Signup />} />
         <Route path='/auth/ngo/signup' element={<NgoSignup />} />
         <Route path='/auth/login' element={<LogIn />} />
-        <Route path='/users/:id'  element={<HostPage user={user} />} />
+        <Route path='/users/:id' element={<HostPage user={user} />} />
+        <Route path='/accommodation/:id' element={<AccommodationPage user={user} />} />
+        <Route path='/users/:id/accommodations/create' element={<AddAccommodation user={user} />} />
 
       </Routes>
     </div>

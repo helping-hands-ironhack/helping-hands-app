@@ -26,7 +26,6 @@ export default function Signup(props){
   const handleSignupSubmit = (e) => {
     e.preventDefault();
     const requestBody = {firstName, lastName, email, password}
-    console.log(requestBody);
 
     axios
     .post(`${API_URL}/api/auth/signup`, requestBody)
