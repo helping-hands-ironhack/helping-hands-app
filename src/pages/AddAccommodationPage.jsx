@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const API_URL = "http://localhost:5005";
 
-export default function AddAccomodation(props) {
+export default function AddAccommodation(props) {
     const [errorMessage, setErrorMessage] = useState(undefined);
     const [description, setDescription] = useState("");
     const [capacity, setCapacity] = useState("");
