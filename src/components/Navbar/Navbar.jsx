@@ -37,7 +37,7 @@ const Navbar = (props) => {
         {(isLoggedIn && user && user._id) && (
           isNgo?
           <>
-            <Link to={`/users/`} className="authLink">
+            <Link to={`/ngo/${user._id}`} className="authLink">
               My NGO profile
             </Link>
             <button className="nav-logoutbtn" onClick={props.handleLogout}>
