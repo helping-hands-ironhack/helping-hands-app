@@ -1,21 +1,21 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import AccommodationCard from "../components/AccommodationCard";
+import NgoCard from "../components/NgoCard";
 
-export default function NgoFeed(){
+export default function HostFeed(){
 
-    const [accommodations, setAccommodations] = useState([]);
+    const [ngos, setNgos] = useState([]);
     const [rooms, setRooms] = useState(0);
     const [capacity, setCapacity] = useState(0);
     const [errorMessage, setErrorMessage] = useState(null);
-    const [accomFromDB, setAccomFromDB] = useState([]);
+    const [ngosFromDB, setNgosFromDB] = useState([]);
 
     useEffect(()=>{
         axios
-        .get(`${process.env.REACT_APP_SERVER_URL}/accommodations`)
+        .get(`${process.env.REACT_APP_SERVER_URL}/ngo`)
         .then(response => {
-            setAccomFromDB(response.data)
-            setAccommodations(response.data)
+            setNgosFromDB(response.data)
+            setNgos(response.data)
         })
         .catch(err => console.log(err));
     }, []);
@@ -26,15 +26,15 @@ export default function NgoFeed(){
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        let results = accommodations.filter((accommodation) => {
+        let results = ngos.filter((accommodation) => {
             return (accommodation.capacity === parseFloat(capacity) && accommodation.rooms === parseFloat(rooms));
         });
 
         if (results.length === 0) {
             setErrorMessage("Sorry, there wasn't any match for you search.");
-            setAccommodations(accomFromDB);
+            setNgos(ngosFromDB);
         } else {
-            setAccommodations(results);
+            setNgos(results);
             setErrorMessage(null);
         };
     };
@@ -42,7 +42,7 @@ export default function NgoFeed(){
     return(
         <div>
             <div>
-                <h1>Filter hosting:</h1>
+                <h1>Filter NGOs:</h1>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="input-firstName">Rooms:</label>
                     <input
@@ -77,9 +77,9 @@ export default function NgoFeed(){
                 )}
             </div>
             <div>
-            <h1>Browse available accommodations:</h1>
-                {accommodations.map((accommodation) => (
-                    <AccommodationCard key={accommodation._id} accommodation={accommodation} />
+            <h1>Browse all registered NGOs:</h1>
+                {ngos.map((ngo) => (
+                    <NgoCard key={ngo._id} ngo={ngo} />
                 ))}
             </div>
         </div>
