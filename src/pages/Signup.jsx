@@ -29,7 +29,7 @@ export default function Signup(props){
 
     axios
     .post(`${API_URL}/api/auth/signup`, requestBody)
-    .then((__) => navigate('/login'))
+    .then((__) => navigate('/auth/login'))
     .catch((error) => {
       const errorDescription = error.response.data.message;
       setErrorMessage(errorDescription);
@@ -38,7 +38,7 @@ export default function Signup(props){
 
   return(
     <div>
-      <h1>Sign Up</h1>
+      <h1>Sign Up as a host</h1>
       <form onSubmit={handleSignupSubmit} className="auth__form">
         <label htmlFor="input-firstName">First name:</label>
         <input

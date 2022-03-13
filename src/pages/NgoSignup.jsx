@@ -31,7 +31,7 @@ export default function NgoSignup(props){
 
     axios
     .post(`${API_URL}/api/auth/ngo/signup`, requestBody)
-    .then((__) => navigate('/login'))
+    .then((__) => navigate('/auth/login'))
     .catch((error) => {
       const errorDescription = error.response.data.message;
       setErrorMessage(errorDescription);
