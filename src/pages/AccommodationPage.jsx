@@ -32,7 +32,7 @@ export default function AccommodationPage(props) {
 
     return (
         <div>
-            <img src={accData.picture} alt="" />
+            <img src={accData.imageUrl} alt="" />
             <h3>{accData.description}</h3>
             <p>Rooms: {accData.rooms}</p>
             <p>Capacity for {accData.capacity} pax</p>
