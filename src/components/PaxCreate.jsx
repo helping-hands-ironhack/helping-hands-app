@@ -9,7 +9,7 @@ export default function PaxCreate(props) {
 
     function handleSubmit(event) {
         event.preventDefault()
-        const requestBody = { adults, children, ngo };
+        const requestBody = { adults, children, ngo: ngo.id };
 
         console.log(requestBody)
 
