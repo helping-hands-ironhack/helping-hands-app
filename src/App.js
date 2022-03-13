@@ -21,7 +21,9 @@ import HostPage from "./pages/HostPage";
 import AddAccommodation from "./pages/AddAccommodationPage";
 import AccommodationPage from "./pages/AccommodationPage";
 import NgoFeed from "./pages/NgoFeed";
+import HostEditPage from "./pages/HostEditPage";
 import HostFeed from "./pages/HostFeed";
+import NgoProfilePage from "./pages/NgoProfilePage";
 
 export default function App() {
   const getUserToken = localStorage.getItem('authToken');
@@ -56,6 +58,8 @@ export default function App() {
         <Route path='/ngoFeed' element={<IsNgo> <NgoFeed /> </IsNgo>} />
 
         <Route path='/users/:id' element={<HostPage user={user} />} />
+        <Route path='/users/:id/edit' element={<HostEditPage user={user} />} />
+        <Route path='/ngo/:id' element={<NgoProfilePage />} />
         <Route path='/accommodation/:id' element={<AccommodationPage user={user} />} />
         <Route path='/users/:id/accommodations/create' element={<AddAccommodation user={user} />} />
 

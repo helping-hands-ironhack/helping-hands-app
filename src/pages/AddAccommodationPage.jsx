@@ -36,12 +36,10 @@ export default function AddAccommodation(props) {
     //Cloudinary setup
     function handleFileUpload(event) {
         event.preventDefault();
-        console.log("The file to be uploaded is:", event.target.files[0]);
         const uploadData = new FormData();
         
         uploadData.append("file", event.target.files[0])
         uploadData.append("upload_preset","fzk9q9ld")
-
 
         axios
         .post(`https://api.cloudinary.com/v1_1/marcelusironhack/image/upload`, uploadData)
@@ -87,7 +85,7 @@ export default function AddAccommodation(props) {
                     onChange={handleDescription}
                     required
                 />
-                <input type="file" onChange={(e) => handleFileUpload(e)} />
+                <input type="file" onChange={(e) => handleFileUpload(e, setImageUrl)} />
                 {imageUrl &&(
                 <>
                     <img src={imageUrl} alt="image" />
