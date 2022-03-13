@@ -5,7 +5,7 @@ export default function AccommodationCard({accommodation}){
         <Link to={`/accommodation/${accommodation._id}`}>
             <div>
                 <h2>{accommodation.description}</h2>
-                <img src={accommodation.picture} alt=''/>
+                <img src={accommodation.imageUrl} alt=''/>
             </div>
         </Link>
     );
