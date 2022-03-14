@@ -20,6 +20,7 @@ export default function PaxCreate(props) {
           .then(() => {
             setAdults(0);
             setChildren(0);
+            props.updateNgo()
           })
           .catch((error) => console.log(error));
     }
