@@ -45,9 +45,8 @@ export default function AccommodationPage(props) {
             <h3>{accData.description}</h3>
             <p>Rooms: {accData.rooms}</p>
             <p>Capacity for {accData.capacity} pax</p>
-            <button onClick={handleDelete}>Delete accommodation</button>
-            <RequestHosting accommodation={accData}/>
             {isOwner && <button onClick={handleDelete}>Delete accommodation</button>}
+            <RequestHosting accommodation={accData}/>
         </div>
     )
 }
