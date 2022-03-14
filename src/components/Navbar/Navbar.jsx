@@ -52,6 +52,9 @@ const Navbar = (props) => {
             <Link to={`/users/${user._id}`} className="authLink">
               My profile
             </Link>
+            <Link to={`/hostFeed`} className="authLink">
+              List of NGOs
+            </Link>
             <button className="nav-logoutbtn" onClick={props.handleLogout}>
               Logout
             </button>
