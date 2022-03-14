@@ -11,31 +11,17 @@ export default function LogIn(props){
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
 
-  const { storeToken, authenticateUser } = useContext(AuthContext);
+  const { loginUser, errorMessage } = useContext(AuthContext);
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
-
+  
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    const requestBody = { email, password };
-
-    axios
-    .post(`${process.env.REACT_APP_SERVER_URL}/auth/login`, requestBody)
-    .then((response) => {
-      storeToken(response.data.authToken);
-      authenticateUser();
-      navigate('/');
-      //window.location.reload()
-    })
-    .catch(error => {
-      const errorDescription = error.response.data.message;
-      setErrorMessage(errorDescription);
-    })
+    loginUser(email, password);
   };
 
   return(

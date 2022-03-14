@@ -42,7 +42,7 @@ export default function HostFeed(){
     return(
         <div>
             <div>
-                <h1>Filter hosting:</h1>
+                <h1>Filter NGOs:</h1>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="input-firstName">Rooms:</label>
                     <input
@@ -77,7 +77,7 @@ export default function HostFeed(){
                 )}
             </div>
             <div>
-            <h1>Browse available accommodations:</h1>
+            <h1>Browse all registered NGOs:</h1>
                 {ngos.map((ngo) => (
                     <NgoCard key={ngo._id} ngo={ngo} />
                 ))}

@@ -30,7 +30,7 @@ const Navbar = (props) => {
   return (
     <nav>
       <Link to={PATHS.HOMEPAGE} className="nav__projectName">
-        {CONSTS.CAPITALIZED_APP} - created with IronLauncher
+        {CONSTS.CAPITALIZED_APP}
       </Link>
 
       <div className="nav__authLinks">
@@ -39,6 +39,9 @@ const Navbar = (props) => {
           <>
             <Link to={`/ngo/${user._id}`} className="authLink">
               My NGO profile
+            </Link>
+            <Link to={`/ngoFeed`} className="authLink">
+              List of hosts
             </Link>
             <button className="nav-logoutbtn" onClick={props.handleLogout}>
               Logout

@@ -16,7 +16,7 @@ export default function PaxCreate(props) {
         const storedToken = localStorage.getItem('authToken');
 
         axios
-          .post(`${process.env.REACT_APP_SERVER_URL}/pax`, requestBody, { headers: { Authorization: `Bearer ${storedToken}` } })
+          .post(`${process.env.REACT_APP_SERVER_URL}/pax/create/${ngo.id}`, requestBody, { headers: { Authorization: `Bearer ${storedToken}` } })
           .then(() => {
             setAdults(0);
             setChildren(0);

@@ -8,8 +8,10 @@ const AuthContext = createContext();
 function AuthProviderWrapper(props){
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isNgo, setIsNgo] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [user, setUser] = useState(null);
+    const [errorMessage, setErrorMessage] = useState(undefined);
     const navigate = useNavigate();
 
     const storeToken = (token) => {
@@ -26,10 +28,13 @@ function AuthProviderWrapper(props){
             )
             .then((response) => {
                 const user = response.data;
-
+                console.log('HI I AM THE RESPONSE DATA: ', response.data);
                 setIsLoggedIn(true);
                 setIsLoading(false);
                 setUser(user);
+
+                if(response.data.isNgo) setIsNgo(true);
+                console.log(isNgo);
             })
             .catch((error) => {      
                 setIsLoggedIn(false);
@@ -47,6 +52,22 @@ function AuthProviderWrapper(props){
         localStorage.removeItem("authToken");
     };
 
+    const loginUser = (email, password) => {
+        const requestBody = { email, password };
+    
+        axios
+        .post(`${process.env.REACT_APP_SERVER_URL}/auth/login`, requestBody)
+        .then((response) => {
+          storeToken(response.data.authToken);
+          authenticateUser();
+          navigate('/');
+          //window.location.reload()
+        })
+        .catch(error => {
+          setErrorMessage(error.response.data.message);
+        })
+    };
+
     const logOutUser = () => {
         removeToken();  
         authenticateUser();
@@ -60,10 +81,13 @@ function AuthProviderWrapper(props){
     return(
         <AuthContext.Provider value={{
             isLoggedIn,
+            isNgo,
             isLoading,
             user,
+            errorMessage,
             storeToken,
             authenticateUser,
+            loginUser,
             logOutUser
         }}>
             {props.children}
