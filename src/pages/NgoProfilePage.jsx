@@ -4,30 +4,25 @@ import { Link, useParams } from "react-router-dom";
 import PaxCreate from "../components/PaxCreate";
 import PaxCard from "../components/PaxCard";
 
-const API_URL = "http://localhost:5005";
-
 export default function NgoProfile(props) {
+  const [ngo, setNgo] = useState("");
+  const { id } = useParams();
 
-    const [ngo, setNgo] = useState(null);
-    const { ngoId } = useParams();
+  function getNgo() {
+    axios
+        .get(`${process.env.REACT_APP_SERVER_URL}/ngo/${id}`)
+        .then((response) => {
+            setNgo(response.data)
+            console.log(id)
+        });
+  }
 
-    function getNgo() {
-        const storedToken = localStorage.getItem("authToken");
-        axios
-          .get(`${API_URL}/api/ngo/${ngoId}`, {headers: { Authorization: `Bearer ${storedToken}`}})
-          .then((response) => {
-            const oneNgo = response.data;
-            setNgo(oneNgo);
-          })
-          .catch((error) => console.log(error));
-    };
+  useEffect(() => {
+    getNgo();
+  }, []);
 
-    useEffect(() => {
-        getNgo();
-    }, [] );
-
-    return (
-        <div className="NgoProfile">
+  return (
+    <div className="NgoProfile">
             {ngo && (
                 <>
                   <h1>{ngo.name}</h1>
@@ -36,12 +31,10 @@ export default function NgoProfile(props) {
                 </>
             )}
             
-            <PaxCreate refreshNgo={getNgo} ngoId={ngoId} />
+            <PaxCreate />
 
-            { ngo && ngo.pax.map((pax) =>
-            <PaxCard key={pax._id} {...pax} />
-            )}    
+            <PaxCard />
 
         </div>
-    )
+  );
 }
