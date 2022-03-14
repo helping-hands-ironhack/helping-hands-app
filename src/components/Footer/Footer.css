@@ -1,0 +1,16 @@
+footer {
+    background-color: #1f2421;
+    color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    left:0;
+    width:100%;
+    }
+
+footer>div {
+    text-align: right;
+}
