@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import RequestHosting from "../components/RequestHosting";
 import { AuthContext } from "../context/auth.context";
 
 export default function AccommodationPage(props) {
@@ -45,6 +46,7 @@ export default function AccommodationPage(props) {
             <p>Rooms: {accData.rooms}</p>
             <p>Capacity for {accData.capacity} pax</p>
             {isOwner && <button onClick={handleDelete}>Delete accommodation</button>}
+            <RequestHosting accommodation={accData}/>
         </div>
     )
 }
