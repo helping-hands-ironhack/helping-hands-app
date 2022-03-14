@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import RequestHosting from "../components/RequestHosting";
 
 export default function AccommodationPage(props) {
     const [accData, setAccData] = useState("")
@@ -37,6 +38,7 @@ export default function AccommodationPage(props) {
             <p>Rooms: {accData.rooms}</p>
             <p>Capacity for {accData.capacity} pax</p>
             <button onClick={handleDelete}>Delete accommodation</button>
+            <RequestHosting accommodation={accData}/>
         </div>
     )
 }
