@@ -37,7 +37,6 @@ export default function NgoProfile(props) {
             
             <PaxCreate updateNgo={getNgo} />
 
-
             { ngo.paxToHost?.map((pax) => <PaxCard key={pax._id} {...pax} /> )} 
 
         </div>
