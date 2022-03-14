@@ -23,7 +23,7 @@ export default function HostPage(props){
     return (
         <div>
             <h1>Welcome to your profile {userData.firstName}!</h1>
-            <img src={userData.picture} alt="user-picture" />
+            <img src={userData.picture} alt="user-face" />
               <AccommodationsFeed user={userData} />
         </div>
     )
