@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import "./HostPage.css"
+import { Link } from "react-router-dom";
 import AccommodationsFeed from "../components/AccommodationsFeed";
 
 
@@ -24,6 +25,7 @@ export default function HostPage(props){
         <div>
             <h1>Welcome to your profile {userData.firstName}!</h1>
             <img src={userData.picture} alt="user-picture" />
+            <Link to={`/users/${id}/edit`}>✏</Link>
               <AccommodationsFeed user={userData} />
         </div>
     )
