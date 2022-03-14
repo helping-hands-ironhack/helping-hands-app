@@ -60,6 +60,7 @@ function AuthProviderWrapper(props){
         .then((response) => {
           storeToken(response.data.authToken);
           authenticateUser();
+          setErrorMessage(undefined);
           navigate('/');
           //window.location.reload()
         })
