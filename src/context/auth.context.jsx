@@ -63,8 +63,8 @@ function AuthProviderWrapper(props){
           navigate('/');
           //window.location.reload()
         })
-        .catch(error => {
-          setErrorMessage(error.response.data.message);
+        .catch((error) => {
+          setErrorMessage('There was an error, please review your credentials.');
         })
     };
 
