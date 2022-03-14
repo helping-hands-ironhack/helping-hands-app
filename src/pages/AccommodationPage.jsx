@@ -8,7 +8,7 @@ import { AuthContext } from "../context/auth.context";
 
 export default function AccommodationPage(props) {
 
-    const {user} = useContext(AuthContext);
+    const {user, isNgo} = useContext(AuthContext);
 
     const [accData, setAccData] = useState("");
     const [isOwner, setIsOwner] = useState(false);
@@ -46,7 +46,7 @@ export default function AccommodationPage(props) {
             <p>Rooms: {accData.rooms}</p>
             <p>Capacity for {accData.capacity} pax</p>
             {isOwner && <button onClick={handleDelete}>Delete accommodation</button>}
-            <RequestHosting accommodation={accData}/>
+            {isNgo && <RequestHosting accommodation={accData}/>}
         </div>
     )
 }

@@ -16,7 +16,7 @@ export default function Signup(props){
   const [lastName, setLastName] = useState('');
   const [errorMessage, setErrorMessage] = useState(undefined);
 
-  const navigate = useNavigate();
+  let navigate = useNavigate();
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
