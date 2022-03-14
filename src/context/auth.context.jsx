@@ -45,6 +45,7 @@ function AuthProviderWrapper(props){
             setIsLoggedIn(false);
             setIsLoading(false);
             setUser(null);
+            setIsNgo(false);
         };
     };
 
@@ -58,16 +59,21 @@ function AuthProviderWrapper(props){
         axios
         .post(`${process.env.REACT_APP_SERVER_URL}/auth/login`, requestBody)
         .then((response) => {
-          storeToken(response.data.authToken);
-          authenticateUser();
-          setErrorMessage(undefined);
-          navigate('/');
-          //window.location.reload()
+            storeToken(response.data.authToken);
+            setErrorMessage(undefined);
+            return authenticateUser();
         })
         .catch((error) => {
           setErrorMessage('There was an error, please review your credentials.');
         })
     };
+
+    // Un poco chusquero pero funciona, mirar si se puede hacer de otra manera
+    useEffect(()=>{
+        console.log('IS NGO?', isNgo)
+        if(isNgo) navigate('/ngoFeed');
+        else navigate('/hostFeed');
+    }, [user, isNgo]);
 
     const logOutUser = () => {
         removeToken();  
