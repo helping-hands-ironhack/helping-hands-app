@@ -9,27 +9,46 @@ export default function RequestHosting(props) {
 
     const [isRequesting, setIsRequesting] = useState(false)
     const [paxData, setPaxData] = useState(null)
+    const [successRequest, setSuccessRequest] = useState(false)
 
 
     useEffect(() => {
+        getPax()
+    }, [])
+
+    function getPax() {
         axios
             .get(`${process.env.REACT_APP_SERVER_URL}/ngo/${user._id}`)
             .then((res) => setPaxData(res.data.paxToHost))
             .catch((error) => console.log(error))
-    }, [user])
+    }
 
     function toggleRequesting(e) {
         e.preventDefault()
         if (isRequesting) setIsRequesting(false)
-        else setIsRequesting(true)
+        else {
+            setIsRequesting(true)
+            setSuccessRequest(false)
+        }
     }
 
     function handleRequest(adults, children, paxId) {
         const totalPax = adults + children
-        if (props.accommodation.capacity < totalPax) alert(`This accommodation has capacity for only ${props.accommodation.capacity} pax`)
+        const accCapacity = props.accommodation.capacity
+
+        if (accCapacity < totalPax) {
+            alert(`This accommodation has capacity for only ${props.accommodation.capacity} pax`)
+            return
+        }
         else {
+
             axios
                 .put(`${process.env.REACT_APP_SERVER_URL}/accommodations/${props.accommodation._id}/push-request/${paxId}`)
+                .then(() => {
+                    setSuccessRequest(true)
+                    setIsRequesting(false)
+                    getPax();
+                })
                 .catch((error) => console.log(error))
         }
     }
@@ -43,7 +62,8 @@ export default function RequestHosting(props) {
                 <>
                     <p>Select the group of pax</p>
                     {(paxData) &&
-                        paxData.map((pax) => {
+
+                        paxData.filter(pax => !pax.isRequested).map((pax) => {
                             return (
                                 <button onClick={() => handleRequest(pax.adults, pax.children, pax._id)}>
                                     <PaxCard key={pax._id} adults={pax.adults} children={pax.children} />
@@ -51,6 +71,11 @@ export default function RequestHosting(props) {
                             )
                         })
                     }
+                </>
+            )}
+            {successRequest && (
+                <>
+                    <p>Your request has been sent!</p>
                 </>
             )}
         </div>
