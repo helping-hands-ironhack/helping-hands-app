@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { signup } from "../services/auth";
 import { Link, useNavigate } from "react-router-dom";
 import "./auth.css";
@@ -15,9 +15,15 @@ export default function NgoSignup(props){
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [cif, setCif] = useState('');
+  const [submit, setSubmit] = useState(false);
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   let navigate = useNavigate();
+
+  const routeChange = () => {
+    let path = `/auth/login`;
+    navigate(path);
+  }
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
@@ -31,12 +37,20 @@ export default function NgoSignup(props){
 
     axios
     .post(`${API_URL}/api/auth/ngo/signup`, requestBody)
-    .then(() => navigate(`/auth/login`))
+    .then(() => navigate())
     .catch((error) => {
       const errorDescription = error.response.data.message;
       setErrorMessage(errorDescription);
     })
+
+    setSubmit(true);
   };
+
+useEffect(() => {
+  if(submit) {
+    navigate('/auth/login')
+  }
+},);
 
   return(
     <div>

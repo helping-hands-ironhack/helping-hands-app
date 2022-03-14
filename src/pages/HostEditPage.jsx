@@ -36,10 +36,6 @@ export default function HostEditPage(props) {
                 const errorDescription = error.response.data.message;
                 setErrorMessage(errorDescription);
             })
-            
-        logOutUser()
-            // logout()
-        // authenticateUser()
     };
 
     //Cloudinary setup
