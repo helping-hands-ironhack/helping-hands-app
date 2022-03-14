@@ -10,13 +10,13 @@ export default function RequestHosting(props) {
     const [isRequesting, setIsRequesting] = useState(false)
     const [paxData, setPaxData] = useState(null)
 
-    
-    useEffect(()=>{
+
+    useEffect(() => {
         axios
-        .get(`${process.env.REACT_APP_SERVER_URL}/ngo/${user._id}`)
-        .then((res)=>setPaxData(res.data.paxToHost))
-        .catch((error)=>console.log(error))
-    },[user])
+            .get(`${process.env.REACT_APP_SERVER_URL}/ngo/${user._id}`)
+            .then((res) => setPaxData(res.data.paxToHost))
+            .catch((error) => console.log(error))
+    }, [user])
 
     function toggleRequesting(e) {
         e.preventDefault()
@@ -24,10 +24,14 @@ export default function RequestHosting(props) {
         else setIsRequesting(true)
     }
 
-    function handleRequest(adults, children) {
+    function handleRequest(adults, children, paxId) {
         const totalPax = adults + children
-        console.log(props.accommodation.capacity);
-        if(props.accommodation.capacity < totalPax) alert(`This accommodation has capacity for only ${props.accommodation.capacity} pax`)
+        if (props.accommodation.capacity < totalPax) alert(`This accommodation has capacity for only ${props.accommodation.capacity} pax`)
+        else {
+            axios
+                .put(`${process.env.REACT_APP_SERVER_URL}/accommodations/${props.accommodation._id}/push-request/${paxId}`)
+                .catch((error) => console.log(error))
+        }
     }
 
     return (
@@ -38,10 +42,10 @@ export default function RequestHosting(props) {
             {isRequesting && (
                 <>
                     <p>Select the group of pax</p>
-                    {(paxData)&&
+                    {(paxData) &&
                         paxData.map((pax) => {
                             return (
-                                <button onClick={()=>handleRequest(pax.adults, pax.children)}>
+                                <button onClick={() => handleRequest(pax.adults, pax.children, pax._id)}>
                                     <PaxCard key={pax._id} adults={pax.adults} children={pax.children} />
                                 </button>
                             )
