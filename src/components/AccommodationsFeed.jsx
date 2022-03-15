@@ -14,7 +14,7 @@ export default function AccommodationsFeed(props) {
                             <Link to={`/accommodation/${acc._id}`}>
                                 <img src={acc.imageUrl} alt="" />
                                 <h2>{acc.description}</h2>
-                              
+                                
                                     <p>Rooms: {acc.rooms}</p>
                                 <p>Capacity for {acc.capacity} pax</p>
                             </Link>
