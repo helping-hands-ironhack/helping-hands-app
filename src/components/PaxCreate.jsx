@@ -1,8 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { AuthContext } from "../context/auth.context";
 
 export default function PaxCreate(props) {
+
     const [adults, setAdults] = useState(0);
     const [children, setChildren] = useState(0);
     const ngo = useParams();
@@ -10,7 +12,6 @@ export default function PaxCreate(props) {
     function handleSubmit(event) {
         event.preventDefault()
         const requestBody = { adults, children, ngo: ngo.id };
-
 
         const storedToken = localStorage.getItem('authToken');
 

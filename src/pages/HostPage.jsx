@@ -24,7 +24,7 @@ export default function HostPage(props){
     return (
         <div>
             <h1>Welcome to your profile {userData.firstName}!</h1>
-            <img src={userData.picture} alt="user-picture" />
+            <img src={userData.imageUrl} alt="user-picture" />
             <Link to={`/users/${id}/edit`}>✏</Link>
               <AccommodationsFeed user={userData} />
         </div>
