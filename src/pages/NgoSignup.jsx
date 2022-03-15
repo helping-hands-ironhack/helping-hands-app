@@ -33,7 +33,6 @@ export default function NgoSignup(props){
   const handleSignupSubmit = (e) => {
     e.preventDefault();
     const requestBody = {name, cif, email, password}
-    console.log(requestBody);
 
     axios
     .post(`${API_URL}/api/auth/ngo/signup`, requestBody)
