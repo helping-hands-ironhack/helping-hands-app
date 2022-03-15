@@ -3,18 +3,20 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 35vmin;
+  width: 35vmin;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
+/*@media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
+}*/
 
 .App-header {
-  background-color: #282c34;
+  background-color: #747c92;
+  background-image: linear-gradient( #747c92, #1a1a1a);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -24,8 +26,60 @@
   color: white;
 }
 
+.App-header-intro>* {
+  margin-top: 5%;
+}
+
+.App-header-intro>h1{
+  width:90%;
+  font-weight:100;
+}
+
+.App-header-intro {
+  margin: 5%;
+  margin-bottom: 10%;
+  background-color: rgba(240, 182, 182, 0.1);
+  border-radius: 10px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 3px 3px 20px rgb(0, 0, 0, 0.6);
+}
+
+.App-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  margin-bottom: 5%;
+}
+
 .App-link {
-  color: #61dafb;
+  color: #4d525f;
+  background-color: #f8f7f9;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 5px;
+  text-decoration: none;
+  width: 100%;
+  font-weight: 700;
+}
+
+.Donate {
+  background-color: #f96e46;
+  color: rgb(248, 247, 249);
+}
+
+.App-link:hover {
+  box-shadow: 0px 0px 10px rgba(248, 247, 249, 0.6);
+  transform: scale(1.01);
+}
+
+.Donate:hover {
+  box-shadow: 0px 0px 10px rgba(255, 140, 97, 0.6);
+  transform: scale(1.01);
 }
 
 @keyframes App-logo-spin {
