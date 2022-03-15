@@ -30,18 +30,6 @@ export default function AccommodationPage(props) {
 
     }, [user]);
 
-    function getNgoName(id){
-        axios
-        .get(`${process.env.REACT_APP_SERVER_URL}/ngo/${id}`)
-        .then((response) => {
-            if (response.data.owner._id === user._id) setIsOwner(true);
-            return response.data.name;
-        })
-        
-        .catch(err => console.log(err))
-
-    }
-
     function handleDelete(e) {
         e.preventDefault()
         axios
@@ -61,14 +49,13 @@ export default function AccommodationPage(props) {
             {isOwner && <button onClick={handleDelete}>Delete accommodation</button>}
             {isOwner && (accData.requests) &&
                 <>
-                    <h2>Rquested by:</h2>
+                    <h2>Requested by:</h2>
                     {accData.requests.map((req)=>{
                         return(
                             <div>
-                                <h3>{req.ngo}</h3>
                                 <p>Adults: {req.adults}</p>
                                 <p>Children: {req.children}</p>
-                                <AcceptRequestButton />
+                                <AcceptRequestButton acc={accData} pax={req} />
                                 <button>Reject request</button>
                             </div>
                         )
