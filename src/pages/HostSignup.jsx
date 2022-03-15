@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./auth.css";
 import * as PATHS from "../utils/paths";
 import * as USER_HELPERS from "../utils/userToken";
+import './auth.css';
 
 export default function HostSignup({ authenticate }) {
   const { firstName, lastName, email,  password } = form;
@@ -45,7 +46,7 @@ export default function HostSignup({ authenticate }) {
   }
 
   return (
-    <div>
+    <div className="formBackground">
       <h1>Sign Up as a host</h1>
       <form onSubmit={handleFormSubmission} className="auth__form">
         <label htmlFor="input-firstname">First Name</label>
