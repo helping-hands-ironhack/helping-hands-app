@@ -1,11 +1,16 @@
 import logo from "../heartHands.png";
 import "../App.css";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../context/auth.context";
 
 function HomePage() {
+
+  const {user} = useContext(AuthContext);
+
   return (
     <div className="App">
-      <header className="App-header">
+      {!user && <header className="App-header">
         <div className="App-header-intro">
           <img src={logo} className="App-logo" alt="logo" />
           <h1>Welcome to Helping Hands.</h1>
@@ -15,7 +20,17 @@ function HomePage() {
             <Link to='/donate' className="App-link Donate">Donate</Link>
           </div>
         </div>
-      </header>
+      </header>}
+
+      {user && <header className="App-header">
+        <div className="App-header-intro">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h1>Welcome to Helping Hands.</h1>
+          <div className="App-div">
+            <Link to='/donate' className="App-link Donate">Donate</Link>
+          </div>
+        </div>
+      </header>}
     </div>
   );
 }
