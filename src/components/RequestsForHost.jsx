@@ -21,7 +21,7 @@ export default function RequestsForHost(props) {
                         setAccData(res.data)
                     })
                     .catch((err) => console.log(err))
-            })
+            }).catch((err) => console.log(err))
 
     }, [])
 
