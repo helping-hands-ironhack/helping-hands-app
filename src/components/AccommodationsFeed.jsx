@@ -5,7 +5,7 @@ export default function AccommodationsFeed(props) {
 
     return (
         <div>
-            <h1>This are your Accommodations</h1>
+            <h1>These are your Accommodations</h1>
             <Link to={`/users/${props.user._id}/accommodations/create`}>Add a new Accommodation</Link>
             <div className="acccommodations-container">
                 {accommodations && (

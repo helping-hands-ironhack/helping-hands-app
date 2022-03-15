@@ -11,8 +11,6 @@ export default function PaxCreate(props) {
         event.preventDefault()
         const requestBody = { adults, children, ngo: ngo.id };
 
-        console.log(requestBody)
-
         const storedToken = localStorage.getItem('authToken');
 
         axios
