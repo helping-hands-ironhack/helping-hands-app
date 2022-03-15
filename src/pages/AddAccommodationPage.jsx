@@ -22,7 +22,6 @@ export default function AddAccommodation(props) {
     function handleSubmit(event) {
         event.preventDefault()
         const requestBody = { description, capacity, rooms, imageUrl }
-        console.log(requestBody);
         axios
             .post(`${process.env.REACT_APP_SERVER_URL}/accommodations/new/${userId}`, requestBody)
             .then(() => navigate(`/users/${userId}`))
