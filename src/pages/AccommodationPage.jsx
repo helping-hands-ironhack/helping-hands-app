@@ -25,7 +25,7 @@ export default function AccommodationPage(props) {
                 if (response.data.owner._id === user._id) setIsOwner(true);
                 return setAccData(response.data);
             })
-            
+
             .catch(err => console.log(err))
 
     }, [user]);
@@ -47,12 +47,12 @@ export default function AccommodationPage(props) {
             <p>Rooms: {accData.rooms}</p>
             <p>Capacity for {accData.capacity} pax</p>
             {isOwner && <button onClick={handleDelete}>Delete accommodation</button>}
-            {isOwner && (accData.requests) &&
+            {isOwner && (accData.requests) && (!accData.isHosting) &&
                 <>
                     <h2>Requested by:</h2>
-                    {accData.requests.map((req)=>{
-                        return(
-                            <div>
+                    {accData.requests.map((req) => {
+                        return (
+                            <div key={req._id}>
                                 <p>Adults: {req.adults}</p>
                                 <p>Children: {req.children}</p>
                                 <AcceptRequestButton acc={accData} pax={req} />
@@ -60,6 +60,11 @@ export default function AccommodationPage(props) {
                             </div>
                         )
                     })}
+                </>
+            }
+            {accData.ishosting &&
+                <>
+                    <p>This accomodation is already hosting!</p>
                 </>
             }
             {isNgo && <RequestHosting accommodation={accData} />}

@@ -11,7 +11,7 @@ export default function AccommodationsFeed(props) {
                 {accommodations && (
                     accommodations.map((acc) => {
                         return(
-                            <Link to={`/accommodation/${acc._id}`}>
+                            <Link key={acc._id} to={`/accommodation/${acc._id}`}>
                                 <img src={acc.imageUrl} alt="" />
                                 <h2>{acc.description}</h2>
                                 
