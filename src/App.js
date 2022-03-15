@@ -1,7 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { Routes, Route } from "react-router-dom";
 import LoadingComponent from "./components/Loading";
-import Navbar from "./components/Navbar/Navbar";
 //import { getLoggedIn, logout } from "./services/auth";
 import routes from "./config/routes";
 import * as USER_HELPERS from "./utils/userToken";
@@ -12,7 +11,10 @@ import IsNgo from "./components/IsNgo";
 import IsHost from "./components/IsHost";
 import IsAnon from "./components/IsAnon";
 
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
 import HomePage from "./pages/HomePage";
+import DonatePage from "./pages/DonatePage";
 import PreSignup from './pages/PreSignup';
 import Signup from './pages/Signup';
 import NgoSignup from './pages/NgoSignup';
@@ -64,8 +66,11 @@ export default function App() {
         <Route path='/ngo/:id/edit' element={<NgoProfileEdit user={user} />} />
         <Route path='/accommodation/:id' element={<AccommodationPage user={user} />} />
         <Route path='/users/:id/accommodations/create' element={<AddAccommodation user={user} />} />
+        <Route path='/donate' element={<DonatePage />} />
 
       </Routes>
+
+      <Footer />
     </div>
   );
 }

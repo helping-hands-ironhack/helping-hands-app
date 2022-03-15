@@ -70,7 +70,6 @@ function AuthProviderWrapper(props){
 
     // Un poco chusquero pero funciona, mirar si se puede hacer de otra manera
     useEffect(()=>{
-        console.log('IS NGO?', isNgo)
         if(isNgo) navigate('/ngoFeed');
         else navigate('/hostFeed');
     }, [user, isNgo]);
