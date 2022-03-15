@@ -5,10 +5,11 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import RequestHosting from "../components/RequestHosting";
 import { AuthContext } from "../context/auth.context";
+import AcceptRequestButton from "../components/AcceptRequestButton";
 
 export default function AccommodationPage(props) {
 
-    const {user, isNgo} = useContext(AuthContext);
+    const { user, isNgo } = useContext(AuthContext);
 
     const [accData, setAccData] = useState("");
     const [isOwner, setIsOwner] = useState(false);
@@ -22,12 +23,24 @@ export default function AccommodationPage(props) {
             .get(`${process.env.REACT_APP_SERVER_URL}/accommodations/${id}`)
             .then((response) => {
                 if (response.data.owner._id === user._id) setIsOwner(true);
-                console.log('RESPONSE',response.data);
                 return setAccData(response.data);
             })
+            
             .catch(err => console.log(err))
 
     }, [user]);
+
+    function getNgoName(id){
+        axios
+        .get(`${process.env.REACT_APP_SERVER_URL}/ngo/${id}`)
+        .then((response) => {
+            if (response.data.owner._id === user._id) setIsOwner(true);
+            return response.data.name;
+        })
+        
+        .catch(err => console.log(err))
+
+    }
 
     function handleDelete(e) {
         e.preventDefault()
@@ -46,7 +59,23 @@ export default function AccommodationPage(props) {
             <p>Rooms: {accData.rooms}</p>
             <p>Capacity for {accData.capacity} pax</p>
             {isOwner && <button onClick={handleDelete}>Delete accommodation</button>}
-            {isNgo && <RequestHosting accommodation={accData}/>}
+            {isOwner && (accData.requests) &&
+                <>
+                    <h2>Rquested by:</h2>
+                    {accData.requests.map((req)=>{
+                        return(
+                            <div>
+                                <h3>{req.ngo}</h3>
+                                <p>Adults: {req.adults}</p>
+                                <p>Children: {req.children}</p>
+                                <AcceptRequestButton />
+                                <button>Reject request</button>
+                            </div>
+                        )
+                    })}
+                </>
+            }
+            {isNgo && <RequestHosting accommodation={accData} />}
         </div>
     )
 }
