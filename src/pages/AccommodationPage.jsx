@@ -62,7 +62,7 @@ export default function AccommodationPage(props) {
                     })}
                 </>
             }
-            {accData.ishosting &&
+            {accData.isHosting &&
                 <>
                     <p>This accomodation is already hosting!</p>
                 </>
