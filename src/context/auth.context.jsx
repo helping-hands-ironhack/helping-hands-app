@@ -28,13 +28,11 @@ function AuthProviderWrapper(props){
             )
             .then((response) => {
                 const user = response.data;
-                console.log('HI I AM THE RESPONSE DATA: ', response.data);
                 setIsLoggedIn(true);
                 setIsLoading(false);
                 setUser(user);
 
                 if(response.data.isNgo) setIsNgo(true);
-                console.log(isNgo);
             })
             .catch((error) => {      
                 setIsLoggedIn(false);

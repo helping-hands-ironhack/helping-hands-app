@@ -22,7 +22,6 @@ export default function AddAccommodation(props) {
     function handleSubmit(event) {
         event.preventDefault()
         const requestBody = { description, capacity, rooms, imageUrl }
-        console.log(requestBody);
         axios
             .post(`${process.env.REACT_APP_SERVER_URL}/accommodations/new/${userId}`, requestBody)
             .then(() => navigate(`/users/${userId}`))
@@ -44,7 +43,7 @@ export default function AddAccommodation(props) {
         axios
         .post(`https://api.cloudinary.com/v1_1/marcelusironhack/image/upload`, uploadData)
         .then(res => setImageUrl(res.data.secure_url))
-        .catch(err => console.log("Error while uploading the file on service", err))     
+        .catch(err => console.log("Error while uploading the file on service", err))
     }
 
 
@@ -85,7 +84,7 @@ export default function AddAccommodation(props) {
                     onChange={handleDescription}
                     required
                 />
-                <input type="file" onChange={(e) => handleFileUpload(e, setImageUrl)} />
+                <input type="file" onChange={(e) => handleFileUpload(e, setImageUrl)} multiple/>
                 {imageUrl &&(
                 <>
                     <img src={imageUrl} alt="image" />
