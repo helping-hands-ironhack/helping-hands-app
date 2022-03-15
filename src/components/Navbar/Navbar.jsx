@@ -8,6 +8,7 @@ import * as PATHS from "../../utils/paths";
 import * as CONSTS from "../../utils/consts";
 import LoadingComponent from "../Loading";
 import logo from '../../heartHands.png';
+import logoNeg from '../../heartHandsNeg.png';
 
 const Navbar = (props) => {
 
@@ -89,7 +90,7 @@ const Navbar = (props) => {
             </div>
             <div className="logo">
               <Link to='/' >
-                <img src={logo} alt='' className="nav-logo" />
+                <img src={logoNeg} alt='' className="nav-logo" />
               </Link>
             </div>
             <div className="menu-items">
@@ -114,7 +115,7 @@ const Navbar = (props) => {
             </div>
             <div className="logo">
               <Link to='/' >
-                <img src={logo} alt='' className="nav-logo" />
+                <img src={logoNeg} alt='' className="nav-logo" />
               </Link>
             </div>
             <div className="menu-items">
@@ -141,7 +142,7 @@ const Navbar = (props) => {
             </div>
             <div className="logo">
               <Link to='/' >
-                <img src={logo} alt='' className="nav-logo" />
+                <img src={logoNeg} alt='' className="nav-logo" />
               </Link>
             </div>
             <div className="menu-items">
