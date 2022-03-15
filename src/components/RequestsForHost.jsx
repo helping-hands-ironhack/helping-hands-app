@@ -5,13 +5,14 @@ import { Link } from "react-router-dom";
 import LoadingComponent from "./Loading";
 
 export default function RequestsForHost(props) {
-    const { user } = useContext(AuthContext)
+    const { user, authenticateUser } = useContext(AuthContext)
     const [userData, setUserData] = useState(null)
     const [accData, setAccData] = useState()
     const [requests, setRequests] = useState(0)
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
+        authenticateUser()
         axios
             .get(`${process.env.REACT_APP_SERVER_URL}/users/`)
             .then((__) => {
@@ -35,7 +36,7 @@ export default function RequestsForHost(props) {
                     {
                         accData.map((acc) => {
                             return (
-                                <Link to={`/accommodation/${acc._id}`}>
+                                <Link key={acc._id} to={`/accommodation/${acc._id}`}>
                                     <p>{acc.description}</p>
                                 </Link>
                             )

@@ -9,8 +9,9 @@ export default function AcceptRequestButton(props){
         axios
         .put(`${process.env.REACT_APP_SERVER_URL}/pax/${props.pax._id}`, requestBody)
         .then(()=>{
+            const requestBody = {isHosting: true, $push: {currentGuests: props.pax._id}}
             axios
-            .put(`${process.env.REACT_APP_SERVER_URL}/pax/${props.acc._id}`)
+            .put(`${process.env.REACT_APP_SERVER_URL}/accommodations/${props.acc._id}`, requestBody)
         })
     }
     

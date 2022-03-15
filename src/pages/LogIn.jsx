@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import * as PATHS from "../utils/paths";
 import * as USER_HELPERS from "../utils/userToken";
 import { AuthContext } from "../context/auth.context";
+import './auth.css';
 
 export default function LogIn(props){
 
@@ -25,43 +26,49 @@ export default function LogIn(props){
   };
 
   return(
-    <div>
-      <h1>Log In</h1>
-      <form onSubmit={handleLoginSubmit} className="signup__form">
-        <label htmlFor="input-email">Email:</label>
-        <input
-          id="input-email"
-          type="text"
-          name="email"
-          placeholder="email"
-          value={email}
-          onChange={handleEmail}
-          required
-        />
-
-        <label htmlFor="input-password">Password:</label>
-        <input
-          id="input-password"
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={password}
-          onChange={handlePassword}
-          required
-          minLength="8"
-        />
-
-        {errorMessage && (
-          <div className="error-block">
-            <p>There was an error submiting the form:</p>
-            <p>{errorMessage}</p>
+    <div className="formBackground">
+      <div className="formContainer">
+        <h1>Log In</h1>
+        <form onSubmit={handleLoginSubmit} className="signup__form">
+          <div className="labelInput">
+            <label htmlFor="input-email">Email:</label>
+            <input
+              id="input-email"
+              type="text"
+              name="email"
+              placeholder="email"
+              value={email}
+              onChange={handleEmail}
+              required
+            />
           </div>
-        )}
 
-        <button className="button__submit" type="submit">
-          Submit
-        </button>
-      </form>
+          <div className="labelInput">
+            <label htmlFor="input-password">Password:</label>
+            <input
+              id="input-password"
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={password}
+              onChange={handlePassword}
+              required
+              minLength="8"
+            />
+          </div>
+
+          {errorMessage && (
+            <div className="error-block">
+              <p>{errorMessage}</p>
+            </div>
+          )}
+          <div className="buttonSubmit">
+            <button className="button__submit" type="submit">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

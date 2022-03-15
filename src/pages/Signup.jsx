@@ -5,6 +5,7 @@ import "./auth.css";
 import axios from 'axios';
 import * as PATHS from "../utils/paths";
 import * as USER_HELPERS from "../utils/userToken";
+import './auth.css';
 const API_URL = 'http://localhost:5005';
 
 
@@ -37,61 +38,72 @@ export default function Signup(props){
   };
 
   return(
-    <div>
-      <h1>Sign Up as a host</h1>
-      <form onSubmit={handleSignupSubmit} className="auth__form">
-        <label htmlFor="input-firstName">First name:</label>
-        <input
-          id="input-firstName"
-          type="text"
-          name="firstName"
-          value={firstName}
-          onChange={handlefirstName}
-          required  
-        />
-        
-        <label htmlFor="input-lastName">Last name:</label>
-        <input
-          id="input-lastName"
-          type="text"
-          name="lastName"
-          value={lastName}
-          onChange={handleLastName}
-          required
-        />
-        
-        <label htmlFor="input-email">Your email:</label>
-        <input
-          id="input-email"
-          type="text"
-          name="email"
-          value={email}
-          onChange={handleEmail}
-          required
-        />
-
-        <label htmlFor="input-password">Password</label>
-        <input
-          id="input-password"
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-          required
-          minLength="8"
-        />
-
-        {errorMessage && (
-          <div className="error-block">
-            <p>There was an error submiting the form:</p>
-            <p>{errorMessage}</p>
+    <div className="formBackground">
+      <div className="formContainer">
+        <h1>Sign Up as a host</h1>
+        <form onSubmit={handleSignupSubmit} className="singup__form">
+          <div className="labelInput">
+            <label htmlFor="input-firstName">First name:</label>
+            <input
+              id="input-firstName"
+              type="text"
+              name="firstName"
+              value={firstName}
+              onChange={handlefirstName}
+              required  
+            />  
           </div>
-        )}
 
-        <button className="button__submit" type="submit">
-          Sign up
-        </button>
-      </form>
+          <div className="labelInput">
+            <label htmlFor="input-lastName">Last name:</label>
+            <input
+              id="input-lastName"
+              type="text"
+              name="lastName"
+              value={lastName}
+              onChange={handleLastName}
+              required
+            />
+          </div>
+          
+          <div className="labelInput">
+            <label htmlFor="input-email">Your email:</label>
+            <input
+              id="input-email"
+              type="text"
+              name="email"
+              value={email}
+              onChange={handleEmail}
+              required
+            />
+          </div>
+
+          <div className="labelInput">
+            <label htmlFor="input-password">Password</label>
+            <input
+              id="input-password"
+              type="password"
+              name="password"
+              value={password}
+              onChange={handlePassword}
+              required
+              minLength="8"
+            />
+          </div>
+
+          {errorMessage && (
+            <div className="error-block">
+              <p>There was an error submiting the form:</p>
+              <p>{errorMessage}</p>
+            </div>
+          )}
+          <div className="buttonSubmit">
+            <button className="button__submit" type="submit">
+              Sign up
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
