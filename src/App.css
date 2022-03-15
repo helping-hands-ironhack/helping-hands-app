@@ -32,6 +32,7 @@
 
 .App-header-intro>h1{
   width:90%;
+  font-weight:100;
 }
 
 .App-header-intro {
@@ -60,7 +61,7 @@
   background-color: #f8f7f9;
   padding: 10px;
   border-radius: 10px;
-  margin: 10px;
+  margin: 5px;
   text-decoration: none;
   width: 100%;
   font-weight: 700;
@@ -68,11 +69,17 @@
 
 .Donate {
   background-color: #f96e46;
-  color: #f8f7f9;
+  color: rgb(248, 247, 249);
 }
 
 .App-link:hover {
+  box-shadow: 0px 0px 10px rgba(248, 247, 249, 0.6);
+  transform: scale(1.01);
+}
+
+.Donate:hover {
   box-shadow: 0px 0px 10px rgba(255, 140, 97, 0.6);
+  transform: scale(1.01);
 }
 
 @keyframes App-logo-spin {

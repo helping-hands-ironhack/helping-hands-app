@@ -44,7 +44,7 @@ export default function App() {
   }
   return (
     <div className="App">
-      <Navbar handleLogout={logOutUser} />
+      <Navbar />
       <Routes>
         {/*{routes({ user, authenticateUser, logOutUser }).map((route) => (
           <Route key={route.path} path={route.path} element={route.element} />

@@ -7,6 +7,7 @@ import "./Navbar.css";
 import * as PATHS from "../../utils/paths";
 import * as CONSTS from "../../utils/consts";
 import LoadingComponent from "../Loading";
+import logo from '../../heartHands.png';
 
 const Navbar = (props) => {
 
@@ -28,9 +29,9 @@ const Navbar = (props) => {
     return <LoadingComponent />;
   }
   return (
-    <nav>
+    {/*<nav>
       <Link to={PATHS.HOMEPAGE} className="nav__projectName">
-        {CONSTS.CAPITALIZED_APP}
+        <img src={logo} alt='' className="nav-logo"/>
       </Link>
 
       <div className="nav__authLinks">
@@ -72,6 +73,87 @@ const Navbar = (props) => {
           </>
         )}
       </div>
+
+    </nav>*/},
+
+    <nav>
+      {(isLoggedIn && user && user._id) && (
+        isNgo?
+        <div className="navbar">
+          <div className="container nav-container">
+            <input className="checkbox" type='checkbox'/>
+            <div className="hamburger-lines">
+              <span className="line line1"></span>
+              <span className="line line2"></span>
+              <span className="line line3"></span>
+            </div>
+            <div className="logo">
+              <Link to='/' >
+                <img src={logo} alt='' className="nav-logo" />
+              </Link>
+            </div>
+            <div className="menu-items">
+              <li><Link to='/ngoFeed'>Available hosting</Link></li>
+              <hr/>
+              <li><Link to={`/ngo/${user._id}`}>Profile</Link></li>
+              <hr/>
+              <li><button className="nav-logoutbtn" onClick={logOutUser}>
+                Logout
+              </button></li>
+            </div>
+          </div>
+        </div>
+        :
+        <div className="navbar">
+          <div className="container nav-container">
+            <input className="checkbox" type='checkbox'/>
+            <div className="hamburger-lines">
+              <span className="line line1"></span>
+              <span className="line line2"></span>
+              <span className="line line3"></span>
+            </div>
+            <div className="logo">
+              <Link to='/' >
+                <img src={logo} alt='' className="nav-logo" />
+              </Link>
+            </div>
+            <div className="menu-items">
+              <li><Link to='/hostFeed'>NGOs</Link></li>
+              <hr/>
+              <li><Link to={`/ngo/${user._id}`}>Profile</Link></li>
+              <hr/>
+              <li><button className="nav-logoutbtn" onClick={logOutUser}>
+                Logout
+              </button></li>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {!isLoggedIn && (
+        <div className="navbar">
+          <div className="container nav-container">
+            <input className="checkbox" type='checkbox'/>
+            <div className="hamburger-lines">
+              <span className="line line1"></span>
+              <span className="line line2"></span>
+              <span className="line line3"></span>
+            </div>
+            <div className="logo">
+              <Link to='/' >
+                <img src={logo} alt='' className="nav-logo" />
+              </Link>
+            </div>
+            <div className="menu-items">
+              <li><Link to='/auth/signup'>Sign up</Link></li>
+              <hr/>
+              <li><Link to='/auth/login'>Log in</Link></li>
+              <hr/>
+              <li><Link to='/donate'>Donate</Link></li>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
