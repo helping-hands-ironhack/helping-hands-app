@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import '../pages/HostPage.css';
+import { AuthContext } from "../context/auth.context";
 
 export default function AccommodationsFeed(props) {
     const accommodations = props.user.accommodations
