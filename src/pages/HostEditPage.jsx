@@ -29,7 +29,7 @@ export default function HostEditPage(props) {
 
     const handleSignupSubmit = (e) => {
         e.preventDefault();
-        const requestBody = { firstName, lastName, email, picture: imageUrl }
+        const requestBody = { firstName, lastName, email, imageUrl: imageUrl }
 
         axios
             .put(`${API_URL}/users/${props.user._id}`, requestBody)
