@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import RequestHosting from "../components/RequestHosting";
 import { AuthContext } from "../context/auth.context";
 import AcceptRequestButton from "../components/AcceptRequestButton";
+import RejectRequestButton from "../components/RejectRequestButton";
 
 export default function AccommodationPage(props) {
 
@@ -13,6 +14,10 @@ export default function AccommodationPage(props) {
 
     const [accData, setAccData] = useState("");
     const [isOwner, setIsOwner] = useState(false);
+
+    const [isRejected, setIsRejected] = useState(false)
+    const [isAccepted, setIsAccepted] = useState(false)
+   
 
     const navigate = useNavigate();
 
@@ -25,9 +30,7 @@ export default function AccommodationPage(props) {
                 if (response.data.owner._id === user._id) setIsOwner(true);
                 return setAccData(response.data);
             })
-
             .catch(err => console.log(err))
-
     }, [user]);
 
     function handleDelete(e) {
@@ -51,12 +54,17 @@ export default function AccommodationPage(props) {
                 <>
                     <h2>Requested by:</h2>
                     {accData.requests.map((req) => {
+                     
                         return (
                             <div key={req._id}>
+                                <h3>{req.title}</h3>
                                 <p>Adults: {req.adults}</p>
                                 <p>Children: {req.children}</p>
-                                <AcceptRequestButton acc={accData} pax={req} />
-                                <button>Reject request</button>
+                                    <>
+                                        <AcceptRequestButton acceptedState={setIsAccepted} acc={accData} pax={req} />
+                                        <RejectRequestButton rejectedState={setIsRejected} acc={accData} pax={req} />
+                                    </>
+                              
                             </div>
                         )
                     })}
