@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import '../pages/HostPage.css';
+import { AuthContext } from "../context/auth.context";
 
 export default function AccommodationsFeed(props) {
     const accommodations = props.user.accommodations
@@ -11,7 +12,7 @@ export default function AccommodationsFeed(props) {
     return (
         <div className="accommodationsContainer">
             <h2>Your accommodations</h2>
-            <Link to={`/users/${props.user._id}/accommodations/create`}>Add a new Accommodation</Link>
+            {isOwner && <Link to={`/users/${props.user._id}/accommodations/create`}>Add a new Accommodation</Link>}
             <div className="acccommodations-list">
                 {accommodations && (
                     accommodations.map((acc) => {
