@@ -7,17 +7,19 @@ export default function PaxCreate(props) {
 
     const [adults, setAdults] = useState(0);
     const [children, setChildren] = useState(0);
+    const [title, setTitle] = useState("");
     const ngo = useParams();
 
     function handleSubmit(event) {
         event.preventDefault()
-        const requestBody = { adults, children, ngo: ngo.id };
+        const requestBody = { title: title, adults, children, ngo: ngo.id };
 
         const storedToken = localStorage.getItem('authToken');
 
         axios
           .post(`${process.env.REACT_APP_SERVER_URL}/pax/create/${ngo.id}`, requestBody, { headers: { Authorization: `Bearer ${storedToken}` } })
           .then(() => {
+            setTitle("")
             setAdults(0);
             setChildren(0);
             props.updateNgo()
@@ -27,9 +29,17 @@ export default function PaxCreate(props) {
 
     return (
         <div className="PaxCreate">
-            <h3>Create Papapapapapax</h3>
+            <h3>Pax to host:</h3>
 
             <form onSubmit={handleSubmit}>
+            <label>Title or description:</label>    
+            <input
+              type="text"
+              name="title"
+              value={title}            
+              onChange={(event) => setTitle(event.target.value)}
+            />
+
             <label>Adults:</label>    
             <input
               type="number"

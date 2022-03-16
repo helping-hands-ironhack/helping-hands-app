@@ -121,7 +121,7 @@ const Navbar = (props) => {
             <div className="menu-items">
               <li><Link to='/hostFeed'>NGOs</Link></li>
               <hr/>
-              <li><Link to={`/ngo/${user._id}`}>Profile</Link></li>
+              <li><Link to={`/users/${user._id}`}>Profile</Link></li>
               <hr/>
               <li><button className="nav-logoutbtn" onClick={logOutUser}>
                 Logout

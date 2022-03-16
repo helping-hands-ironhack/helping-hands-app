@@ -65,8 +65,8 @@ export default function RequestHosting(props) {
 
                         paxData.filter(pax => !pax.isRequested).map((pax) => {
                             return (
-                                <button onClick={() => handleRequest(pax.adults, pax.children, pax._id)}>
-                                    <PaxCard key={pax._id} adults={pax.adults} children={pax.children} />
+                                <button onClick={() => handleRequest( pax.adults, pax.children, pax._id)}>
+                                    <PaxCard key={pax._id} title={pax.title} adults={pax.adults} children={pax.children} />
                                 </button>
                             )
                         })

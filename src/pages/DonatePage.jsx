@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './DonatePage.css';
 
 export default function DonatePage(){
 
@@ -10,40 +11,61 @@ export default function DonatePage(){
     }
 
     return(
-        <div>
-            <p>Helping Hands focuses on locating conflict victims who are escaping. However, if you cannot host anybody but still want to help, you can freely donate here.</p>
-
-            <h1>DONATE</h1>
-            {donated ? 
-            <div>
-                <p>Thank you for your donation! You just helped somebody in need.</p>
-                <button onClick={()=> setDonated(false)}>Donate again</button>
+        <div className='donateBackground'>
+            <div className="donateHeader">
+                <p>Helping Hands focuses on locating conflict victims who are looking for shelter. However, if you cannot host anybody but still want to help, you can freely donate here.</p>
             </div>
-            :
-            <form onSubmit={handleDonate}>
-                <label>First name:</label>
-                <input required/>
+            <div className="donationFormContainer">
+                <h1>Donate</h1>
+                <div className="formWrapper">
+                    {donated ? 
+                    <div className="donatedDiv">
+                        <div>
+                            <p>Thank you for your donation! You just helped somebody in need.</p>
+                        </div>
+                        <button onClick={()=> setDonated(false)} className='donateBtn'>Donate again</button>
+                    </div>
+                    :
+                    <form onSubmit={handleDonate}>
+                        <div className="creditCardInput">
+                            <label>First name:</label>
+                            <input required/>
+                        </div>
 
-                <label>Last name:</label>
-                <input required/>
+                        <div className="creditCardInput">
+                            <label>Last name:</label>
+                            <input required/>
+                        </div>
 
-                <label>Email address:</label>
-                <input required/>
-                
-                <label>Credit Card Number:</label>
-                <input required/>
-                
-                <label>Security Code:</label>
-                <input type='number' placeholder="CVC" required/>
-                
-                <label>Security Code:</label>
-                <input placeholder="YY/MM" required/>
-                
-                <label>Quantity(€):</label>
-                <input required/>
+                        <div className="creditCardInput">
+                            <label>Email address:</label>
+                            <input required/>
+                        </div>
+                        
+                        <div className="creditCardInput">
+                            <label>Credit Card Number:</label>
+                            <input required/>
+                        </div>
+                        
+                        <div className="creditCardInput">
+                            <label>Security Code:</label>
+                            <input type='number' placeholder="CVC" required/>
+                        </div>
+                        
+                        <div className="creditCardInput">
+                            <label>Security Code:</label>
+                            <input placeholder="YY/MM" required/>
+                        </div>
+                        
+                        <div className="creditCardInput">
+                            <label>Quantity(€):</label>
+                            <input required/>
+                        </div>
 
-                <button type='submit'>Donate</button>
-            </form>}
+                        <button type='submit' className="donateBtn">Donate</button>
+                    </form>}
+                </div>
+            </div>
         </div>
     );
 };
