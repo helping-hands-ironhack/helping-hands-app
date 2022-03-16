@@ -22,6 +22,10 @@ const Navbar = (props) => {
     authenticateUser()
     setIsLoading(false)
   },[]);
+
+  function uncheck() {
+    document.getElementById('checkedMenu').checked = false;
+  }
   
   if (user) {
     isNgo = (user.isNgo);
@@ -82,7 +86,7 @@ const Navbar = (props) => {
         isNgo?
         <div className="navbar">
           <div className="container nav-container">
-            <input className="checkbox" type='checkbox'/>
+            <input className="checkbox" type='checkbox' id='checkedMenu'/>
             <div className="hamburger-lines">
               <span className="line line1"></span>
               <span className="line line2"></span>
@@ -94,9 +98,9 @@ const Navbar = (props) => {
               </Link>
             </div>
             <div className="menu-items">
-              <li><Link to='/ngoFeed'>Available hosting</Link></li>
+              <li><Link to='/ngoFeed' onClick={uncheck}>Available hosting</Link></li>
               <hr/>
-              <li><Link to={`/ngo/${user._id}`}>Profile</Link></li>
+              <li><Link to={`/ngo/${user._id}`} onClick={uncheck}>Profile</Link></li>
               <hr/>
               <li><button className="nav-logoutbtn" onClick={logOutUser}>
                 Logout
@@ -107,7 +111,7 @@ const Navbar = (props) => {
         :
         <div className="navbar">
           <div className="container nav-container">
-            <input className="checkbox" type='checkbox'/>
+            <input className="checkbox" type='checkbox' id='checkedMenu'/>
             <div className="hamburger-lines">
               <span className="line line1"></span>
               <span className="line line2"></span>
@@ -119,9 +123,9 @@ const Navbar = (props) => {
               </Link>
             </div>
             <div className="menu-items">
-              <li><Link to='/hostFeed'>NGOs</Link></li>
+              <li><Link to='/hostFeed' onClick={uncheck}>NGOs</Link></li>
               <hr/>
-              <li><Link to={`/users/${user._id}`}>Profile</Link></li>
+              <li><Link to={`/users/${user._id}`} onClick={uncheck}>Profile</Link></li>
               <hr/>
               <li><button className="nav-logoutbtn" onClick={logOutUser}>
                 Logout
@@ -134,7 +138,7 @@ const Navbar = (props) => {
       {!isLoggedIn && (
         <div className="navbar">
           <div className="container nav-container">
-            <input className="checkbox" type='checkbox'/>
+            <input className="checkbox" type='checkbox' id="checkedMenu"/>
             <div className="hamburger-lines">
               <span className="line line1"></span>
               <span className="line line2"></span>
@@ -146,11 +150,11 @@ const Navbar = (props) => {
               </Link>
             </div>
             <div className="menu-items">
-              <li><Link to='/auth/signup'>Sign up</Link></li>
+              <li><Link to='/auth/signup' onClick={uncheck}>Sign up</Link></li>
               <hr/>
-              <li><Link to='/auth/login'>Log in</Link></li>
+              <li><Link to='/auth/login' onClick={uncheck}>Log in</Link></li>
               <hr/>
-              <li><Link to='/donate'>Donate</Link></li>
+              <li><Link to='/donate' onClick={uncheck}>Donate</Link></li>
             </div>
           </div>
         </div>

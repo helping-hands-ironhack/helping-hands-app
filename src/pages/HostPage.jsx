@@ -22,11 +22,20 @@ export default function HostPage(props){
 
 
     return (
-        <div>
-            <h1>Welcome to your profile {userData.firstName}!</h1>
+        <div className="userProfileBackground">
+          <div className="profileDiv">
+            <h1>Welcome to your profile, {userData.firstName}.</h1>
             <img src={userData.imageUrl} alt="user" />
-            <Link to={`/users/${id}/edit`}>✏</Link>
-              <AccommodationsFeed user={userData} />
+            <div className="editProfile">
+              <Link to={`/users/${id}/edit`}>
+                <p>Edit your profile</p>
+              </Link>
+              <Link to={`/users/${id}/edit`}>
+                <button>✏</button>
+              </Link>
+            </div>
+          </div>
+          <AccommodationsFeed user={userData} />
         </div>
     )
 }
