@@ -16,6 +16,7 @@ export default function NgoSignup(props){
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [cif, setCif] = useState('');
+  const [description, setDescription] = useState('');
   const [submit, setSubmit] = useState(false);
   const [errorMessage, setErrorMessage] = useState(undefined);
 
@@ -25,10 +26,11 @@ export default function NgoSignup(props){
   const handlePassword = (e) => setPassword(e.target.value);
   const handleName = (e) => setName(e.target.value);
   const handleCif = (e) => setCif(e.target.value);
+  const handleDescription = (e) => setDescription(e.target.value);
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
-    const requestBody = {name, cif, email, password}
+    const requestBody = {name, cif, email, password, description}
 
     axios
     .post(`${API_URL}/auth/ngo/signup`, requestBody)
@@ -71,6 +73,18 @@ useEffect(() => {
               name="cif"
               value={cif}
               onChange={handleCif}
+              required
+            />
+          </div>
+
+          <div className="labelInput">
+            <label htmlFor="input-cif">Ngo Description:</label>
+            <input
+              id="input-description"
+              type="text"
+              name="cif"
+              value={description}
+              onChange={handleDescription}
               required
             />
           </div>
