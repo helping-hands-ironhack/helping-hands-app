@@ -3,7 +3,6 @@ import { useState } from "react"
 
 export default function RejectRequestButton(props) {
     function handleReject() {
-        props.rejectedState(true)
         const requestBody = { isRequested: false }
         axios
             .put(`${process.env.REACT_APP_SERVER_URL}/pax/${props.pax._id}`, requestBody)
