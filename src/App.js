@@ -27,6 +27,7 @@ import HostEditPage from "./pages/HostEditPage";
 import HostFeed from "./pages/HostFeed";
 import NgoProfilePage from "./pages/NgoProfilePage";
 import NgoProfileEdit from "./pages/NgoProfileEdit";
+import AccommodationCard from "./components/AccommodationCard";
 
 export default function App() {
   const getUserToken = localStorage.getItem('authToken');
@@ -59,7 +60,7 @@ export default function App() {
         <Route path='/hostFeed' element={<IsHost> <HostFeed /> </IsHost>} />
 
         <Route path='/ngoFeed' element={<IsNgo> <NgoFeed /> </IsNgo>} />
-
+        <Route path='/ngooFeed/accomodationOwner' element={<IsNgo> <AccommodationCard /> </IsNgo>} />
         <Route path='/users/:id' element={<HostPage user={user} />} />
         <Route path='/users/:id/edit' element={<HostEditPage user={user} />} />
         <Route path='/ngo/:id' element={<NgoProfilePage />} />
