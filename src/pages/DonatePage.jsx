@@ -13,6 +13,7 @@ export default function DonatePage(){
     return(
         <div className='donateBackground'>
             <div className="donateHeader">
+                <h1>Start helping now.</h1>
                 <p>Helping Hands focuses on locating conflict victims who are looking for shelter. However, if you cannot host anybody but still want to help, you can freely donate here.</p>
             </div>
             <div className="donationFormContainer">
@@ -53,7 +54,7 @@ export default function DonatePage(){
                         </div>
                         
                         <div className="creditCardInput">
-                            <label>Security Code:</label>
+                            <label>Card expiration:</label>
                             <input placeholder="YY/MM" required/>
                         </div>
                         

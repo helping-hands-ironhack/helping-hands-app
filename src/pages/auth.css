@@ -51,7 +51,7 @@ button.button__submit {
 
 .formContainer {
   margin: 5%;
-  margin-bottom: 10%;
+  margin-bottom: 5%;
   background-color: rgba(240, 182, 182, 0.1);
   border-radius: 10px;
   width: 90%;
@@ -94,6 +94,11 @@ button.button__submit {
   margin-top: 5px;
   padding: 5px;
   padding-left: 10px;
+}
+
+.changePage>* {
+  margin-bottom: 2px;
+  color: #f7f8f9;
 }
 
 .error-block {
