@@ -61,7 +61,7 @@ export default function AccommodationPage(props) {
             <p>Rooms: {accData.rooms}</p>
             <p>Capacity for {accData.capacity} pax</p>
             {isOwner && <button onClick={handleDelete}>Delete accommodation</button>}
-            {isOwner && (accData.requests) && (!accData.isHosting) &&
+            {isOwner && (accData.requests) && (accData.requests.length >0) && (!accData.isHosting) &&
 
                 <>
                     <button onClick={toggleRequests}>Show requests</button>
@@ -77,8 +77,8 @@ export default function AccommodationPage(props) {
                                         <p>Adults: {req.adults}</p>
                                         <p>Children: {req.children}</p>
                                         <>
-                                            <AcceptRequestButton onClick={toggleRequests} acc={accData} pax={req} />
-                                            <RejectRequestButton onClick={toggleRequests} acc={accData} pax={req} />
+                                            <AcceptRequestButton toggleRequests={toggleRequests} acc={accData} pax={req} />
+                                            <RejectRequestButton toggleRequests={toggleRequests} acc={accData} pax={req} />
                                         </>
 
                                     </div>
