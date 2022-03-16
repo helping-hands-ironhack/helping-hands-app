@@ -56,6 +56,10 @@
     background-image: linear-gradient( #747c92, #1a1a1a);
 }
 
+.accommodationsContainer h2 {
+    margin-bottom: 30px;
+}
+
 .accommodationsContainer>a {
     text-decoration: none;
     background-color: #f96e46;
@@ -73,21 +77,38 @@
     padding-top: 5px;
 }
 
-.acccommodations-list>a {
-    display: flex;
-    flex-direction: column;
-    background-color: #f7f8f9;
-    margin: 15px;
-    border-radius: 10px;
-    text-decoration: none;
+.listTitle {
+    background: rgba(116, 124, 146, 0.1);
+    color: rgba(26, 26, 26, 0.8);
 }
 
 .listCard {
     display: flex;
     width: 100%;
+    align-items: center;
 }
 
 .listCard img {
     object-fit: cover;
-    width: 30vw;
+    width: 50%;
+}
+
+.listCard div {
+    width: 50%;
+}
+
+.listCard p {
+    color: rgba(26, 26, 26, 0.8);
+    text-align: left;
+    margin: 5px 10px;
+}
+
+.acccommodations-list>a {
+    display: flex;
+    flex-direction: column;
+    background-color: #f7f8f9;
+    box-shadow: 3px 3px 20px rgb(0, 0, 0, 0.3);
+    margin: 15px;
+    border-radius: 10px;
+    text-decoration: none;
 }

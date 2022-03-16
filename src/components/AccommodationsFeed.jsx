@@ -6,19 +6,21 @@ export default function AccommodationsFeed(props) {
 
     return (
         <div className="accommodationsContainer">
-            <h1>Your accommodations</h1>
+            <h2>Your accommodations</h2>
             <Link to={`/users/${props.user._id}/accommodations/create`}>Add a new Accommodation</Link>
             <div className="acccommodations-list">
                 {accommodations && (
                     accommodations.map((acc) => {
                         return(
                             <Link key={acc._id} to={`/accommodation/${acc._id}`}>
-                                <h2>{acc.description}</h2>
+                                <div className="listTitle">
+                                    <h3>{acc.description}</h3>
+                                </div>
                                 <div className="listCard">
                                     <img src={acc.imageUrl} alt="" />
                                     <div>
-                                        <p>Rooms: {acc.rooms}</p>
-                                        <p>Capacity for {acc.capacity} pax</p>
+                                        <p><strong>Rooms:</strong> {acc.rooms}</p>
+                                        <p><strong>Capacity: </strong>{acc.capacity} pax</p>
                                     </div>
                                 </div>
                             </Link>
