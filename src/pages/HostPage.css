@@ -72,9 +72,10 @@
 .acccommodations-list {
     background-color: rgba(247, 248, 249, 0.1);
     box-shadow: 3px 3px 20px rgb(0, 0, 0, 0.3);
-    margin: 10% 5% 15% 5%;
+    margin: 10% 5% 20% 5%;
     border-radius: 10px;
     padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .listTitle {
@@ -91,6 +92,7 @@
 .listCard img {
     object-fit: cover;
     width: 50%;
+    border-radius: 0 0 0 10px;
 }
 
 .listCard div {

@@ -12,7 +12,7 @@ export default function AccommodationsFeed(props) {
     return (
         <div className="accommodationsContainer">
             <h2>Your accommodations</h2>
-            <Link to={`/users/${props.user._id}/accommodations/create`}>Add a new Accommodation</Link>
+            {isOwner && <Link to={`/users/${props.user._id}/accommodations/create`}>Add a new Accommodation</Link>}
             <div className="acccommodations-list">
                 {accommodations && (
                     accommodations.map((acc) => {

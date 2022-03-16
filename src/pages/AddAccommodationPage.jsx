@@ -50,52 +50,65 @@ export default function AddAccommodation(props) {
 
 
     return (
-        <div>
-            <h1>Register an Accommodation</h1>
-            <form onSubmit={handleSubmit} className="auth__form">
-                <label htmlFor="input-firstName">Rooms:</label>
-                <input
-                    id="input-rooms"
-                    type="number"
-                    name="rooms"
-                    placeholder="Number of rooms"
-                    value={rooms}
-                    onChange={handleRooms}
-                    required
-                />
+        <div className="formBackground">
+            <div className="formContainer">
+                <h1>Register an Accommodation</h1>
+                <form onSubmit={handleSubmit} className="signup__form">
+                    <div className="labelInput">
+                        <label htmlFor="input-firstName">Rooms:</label>
+                        <input
+                            id="input-rooms"
+                            type="number"
+                            name="rooms"
+                            placeholder="Number of rooms"
+                            value={rooms}
+                            onChange={handleRooms}
+                            required
+                        />
+                    </div>
 
-                <label htmlFor="input-firstName">Capacity:</label>
-                <input
-                    id="input-capacity"
-                    type="number"
-                    name="capacity"
-                    placeholder="The total of people you can host"
-                    value={capacity}
-                    onChange={handleCapacity}
-                    required
-                />
+                    <div className="labelInput">
+                        <label htmlFor="input-firstName">Capacity:</label>
+                        <input
+                            id="input-capacity"
+                            type="number"
+                            name="capacity"
+                            placeholder="The total of people you can host"
+                            value={capacity}
+                            onChange={handleCapacity}
+                            required
+                        />
+                    </div>
 
-                <label htmlFor="input-description">Description:</label>
-                <input
-                    id="input-description"
-                    type="textarea"
-                    name="description"
-                    placeholder="Example: an apartment next to the city center"
-                    value={description}
-                    onChange={handleDescription}
-                    required
-                />
-                <input type="file" onChange={(e) => handleFileUpload(e, setImageUrl)} multiple/>
-                {imageUrl &&(
-                <>
-                    <img src={imageUrl} alt="image" />
-                </>
-                )}
-            
-                <button className="button__submit" type="submit">
-                    Add
-                </button>
-            </form>
+                    <div className="labelInput">
+                    <label htmlFor="input-description">Description:</label>
+                    <input
+                        id="input-description"
+                        type="textarea"
+                        name="description"
+                        placeholder="Example: an apartment next to the city center"
+                        value={description}
+                        onChange={handleDescription}
+                        required
+                    />
+                    </div>
+
+                    <div className="labelInput">
+                        <input type="file" onChange={(e) => handleFileUpload(e, setImageUrl)} multiple/>
+                        {imageUrl &&(
+                        <>
+                            <img src={imageUrl} alt="profile" />
+                        </>
+                        )}
+                    </div>
+                    
+                    <div className="buttonSubmit">
+                        <button className="button__submit" type="submit">
+                            Add
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }
