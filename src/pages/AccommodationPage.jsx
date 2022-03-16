@@ -24,14 +24,19 @@ export default function AccommodationPage(props) {
 
     const { id } = useParams();
 
-    useEffect(() => {
+
+    function getAccInfo(){
         axios
-            .get(`${process.env.REACT_APP_SERVER_URL}/accommodations/${id}`)
-            .then((response) => {
-                if (response.data.owner._id === user._id) setIsOwner(true);
-                return setAccData(response.data);
-            })
-            .catch(err => console.log(err))
+        .get(`${process.env.REACT_APP_SERVER_URL}/accommodations/${id}`)
+        .then((response) => {
+            if (response.data.owner._id === user._id) setIsOwner(true);
+            return setAccData(response.data);
+        })
+        .catch(err => console.log(err))
+    }
+
+    useEffect(() => {
+        getAccInfo()
     }, [user]);
 
     function handleDelete(e) {
@@ -46,6 +51,7 @@ export default function AccommodationPage(props) {
 
     function toggleRequests(){
         showRequests?setShowRequests(false):setShowRequests(true)
+        getAccInfo()
     }
 
     return (
@@ -71,8 +77,8 @@ export default function AccommodationPage(props) {
                                         <p>Adults: {req.adults}</p>
                                         <p>Children: {req.children}</p>
                                         <>
-                                            <AcceptRequestButton acceptedState={setIsAccepted} acc={accData} pax={req} />
-                                            <RejectRequestButton rejectedState={setIsRejected} acc={accData} pax={req} />
+                                            <AcceptRequestButton onClick={toggleRequests} acc={accData} pax={req} />
+                                            <RejectRequestButton onClick={toggleRequests} acc={accData} pax={req} />
                                         </>
 
                                     </div>

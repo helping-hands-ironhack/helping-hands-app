@@ -5,7 +5,6 @@ export default function AcceptRequestButton(props) {
     
     function handleAccept() {
         const requestBody = { isHosted: true, hostedAt: props.acc._id }
-        props.acceptedState(true)
 
         axios
             .put(`${process.env.REACT_APP_SERVER_URL}/pax/${props.pax._id}`, requestBody)
