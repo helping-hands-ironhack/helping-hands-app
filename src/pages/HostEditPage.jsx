@@ -88,7 +88,7 @@ export default function HostEditPage(props) {
                 <input type="file" onChange={(e) => handleFileUpload(e, setImageUrl)} />
                 {imageUrl && (
                     <>
-                        <img src={imageUrl} alt="image" />
+                        <img src={imageUrl} alt="eeee" />
                     </>
                 )}
 

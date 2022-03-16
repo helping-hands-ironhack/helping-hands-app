@@ -15,6 +15,7 @@ export default function NgoProfile(props) {
         .get(`${process.env.REACT_APP_SERVER_URL}/ngo/${id}`)
         .then((response) => {
             setNgo(response.data)
+            console.log(response.data)
         });
   }
 
@@ -28,7 +29,8 @@ export default function NgoProfile(props) {
                 <>
                   <h1>{ngo.name}</h1>
                   <p>{ngo.cif}</p>
-                  <p>{ngo.email}</p>  
+                  <p>{ngo.email}</p>
+                  <img src={ngo.imageUrl} alt=""/>
                 </>
             )}
 
