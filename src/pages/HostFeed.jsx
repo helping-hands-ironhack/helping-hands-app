@@ -3,6 +3,7 @@ import { useEffect, useState, useContext } from "react";
 import NgoCard from "../components/NgoCard";
 import RequestsForHost from "../components/RequestsForHost";
 import { AuthContext } from "../context/auth.context";
+import './HostFeed.css';
 
 export default function HostFeed() {
 
@@ -19,7 +20,7 @@ export default function HostFeed() {
     }, []);
 
     return (
-        <div>
+        <div className="hostFeedBackground">
             <RequestsForHost />
             <h1>Browse all registered NGOs:</h1>
             {ngos.map((ngo) => (
