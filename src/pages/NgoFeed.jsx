@@ -7,7 +7,6 @@ import './NgoFeed.css';
 export default function NgoFeed(){
 
     const [accommodations, setAccommodations] = useState([]);
-    const [owners, setOwners] = useState([]);
     const [rooms, setRooms] = useState(0);
     const [capacity, setCapacity] = useState(0);
     const [errorMessage, setErrorMessage] = useState(null);
@@ -17,10 +16,8 @@ export default function NgoFeed(){
         axios
         .get(`${process.env.REACT_APP_SERVER_URL}/accommodations`)
         .then(response => {
-            console.log(response.data)
             setAccomFromDB(response.data)
             setAccommodations(response.data)
-            setOwners(response.data)
         })
         .catch(err => console.log(err));
     }, []);
