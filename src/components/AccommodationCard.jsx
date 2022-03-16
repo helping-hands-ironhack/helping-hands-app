@@ -5,14 +5,13 @@ import { AuthContext } from "../context/auth.context";
 
 export default function AccommodationCard({accommodation}){
     const {user} = useContext(AuthContext);
-
     const isOwner = accommodation.owner === user._id;
     // console.log("THEM PROPS ==========>", props)
   //  axios
         // .get(`${process.env.REACT_APP_SERVER_URL}/users/${id}`)
 
     return(
-        <Link to={`/accommodations/${accommodation._id}`}>
+        <Link to={`/accommodation/${accommodation._id}`}>
             <div className="listTitle">
                 <h3>{accommodation.description}</h3>
             </div>
