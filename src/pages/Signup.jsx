@@ -6,7 +6,7 @@ import axios from 'axios';
 import * as PATHS from "../utils/paths";
 import * as USER_HELPERS from "../utils/userToken";
 import './auth.css';
-const API_URL = 'http://localhost:5005';
+const API_URL = process.env.REACT_APP_SERVER_URL;
 
 
 export default function Signup(props){
@@ -29,7 +29,7 @@ export default function Signup(props){
     const requestBody = {firstName, lastName, email, password}
 
     axios
-    .post(`${API_URL}/api/auth/signup`, requestBody)
+    .post(`${API_URL}/auth/signup`, requestBody)
     .then((__) => navigate('/auth/login'))
     .catch((error) => {
       const errorDescription = error.response.data.message;

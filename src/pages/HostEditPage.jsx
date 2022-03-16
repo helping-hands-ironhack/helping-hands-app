@@ -7,7 +7,7 @@ import axios from 'axios';
 import * as PATHS from "../utils/paths";
 import * as USER_HELPERS from "../utils/userToken";
 import { logout } from "../services/auth";
-const API_URL = 'http://localhost:5005';
+const API_URL = process.env.REACT_APP_SERVER_URL;
 
 
 export default function HostEditPage(props) {
@@ -30,7 +30,7 @@ export default function HostEditPage(props) {
         const requestBody = { firstName, lastName, email, picture: imageUrl }
 
         axios
-            .put(`${API_URL}/api/users/${props.user._id}`, requestBody)
+            .put(`${API_URL}/users/${props.user._id}`, requestBody)
             .then((__) => navigate(`/auth/login`))
             .catch((error) => {
                 const errorDescription = error.response.data.message;
