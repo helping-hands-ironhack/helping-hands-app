@@ -50,7 +50,7 @@ useEffect(() => {
   return(
     <div className="formBackground">
       <div className="formContainer">
-        <h1>Sign Up as an NGO</h1>
+        <h1>Sign up as an NGO</h1>
         <form onSubmit={handleSignupSubmit} className="signup__form">
           <div className="labelInput">
             <label htmlFor="input-name">Organization name:</label>
@@ -115,6 +115,10 @@ useEffect(() => {
             </button>
           </div>
         </form>
+      </div>
+      <div className="changePage">
+        <p>Already a member?</p>
+        <Link to='/auth/login'>Log in</Link>
       </div>
     </div>
   );
