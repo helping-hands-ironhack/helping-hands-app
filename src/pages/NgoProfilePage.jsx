@@ -20,7 +20,6 @@ export default function NgoProfile(props) {
         .get(`${process.env.REACT_APP_SERVER_URL}/ngo/${id}`)
         .then((response) => {
             setNgo(response.data)
-            console.log(response.data)
         });
   }
 
