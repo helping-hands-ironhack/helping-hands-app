@@ -11,6 +11,7 @@ export default function NgoProfileEdit(props) {
     const [email, setEmail] = useState(props.email);
     const [name, setName] = useState(props.name);
     const [cif, setCif] = useState(props.cif);
+    const [imageUrl, setImageUrl] = useState("")
     const [errorMessage, setErrorMessage] = useState("");
 
     const navigate = useNavigate();
@@ -21,7 +22,7 @@ export default function NgoProfileEdit(props) {
 
     const handleEditSubmit = (e) => {
         e.preventDefault();
-        const requestBody = {email, name, cif}
+        const requestBody = {email, name, cif, imageUrl: imageUrl}
 
         axios
             .put(`${process.env.REACT_APP_SERVER_URL}/ngo/${id}`, requestBody)
@@ -30,6 +31,19 @@ export default function NgoProfileEdit(props) {
                 const errorDescription = error.response.data.message;
                 setErrorMessage(errorDescription);
             })
+    }
+
+    function handleFileUpload(event) {
+        event.preventDefault();
+        const uploadData = new FormData();
+
+        uploadData.append("file", event.target.files[0])
+        uploadData.append("upload_preset", "fzk9q9ld")
+
+        axios
+            .post(`https://api.cloudinary.com/v1_1/marcelusironhack/image/upload`, uploadData)
+            .then(res => setImageUrl(res.data.secure_url))
+            .catch(err => console.log("Error while uploading the file on service", err))
     }
 
     return (
@@ -65,6 +79,13 @@ export default function NgoProfileEdit(props) {
                     onChange={handleCif}
                     required
                 />
+
+                <input type="file" onChange={(e) => handleFileUpload(e, setImageUrl)} />
+                {imageUrl && (
+                    <>
+                        <img src={imageUrl} alt="image" />
+                    </>
+                )}
 
                 {errorMessage && (
                     <div className="error-block">
