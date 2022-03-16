@@ -2,6 +2,7 @@ import { useState, useContext, useEffect } from "react"
 import PaxCard from "./PaxCard"
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
+import '../pages/AccommodationPage.css';
 
 
 export default function RequestHosting(props) {
@@ -55,23 +56,23 @@ export default function RequestHosting(props) {
 
     return (
         <div>
-            <button className="" onClick={toggleRequesting}>
+            <button className="requestBtn" onClick={toggleRequesting}>
                 Request hosting
             </button>
             {isRequesting && (
-                <>
+                <div className="availablePaxContainer">
                     <p>Select the group of pax</p>
                     {(paxData) &&
 
                         paxData.filter(pax => !pax.isRequested).map((pax) => {
                             return (
-                                <button onClick={() => handleRequest( pax.adults, pax.children, pax._id)}>
+                                <button onClick={() => handleRequest( pax.adults, pax.children, pax._id)} className='handleRequestBtn'>
                                     <PaxCard key={pax._id} title={pax.title} adults={pax.adults} children={pax.children} />
                                 </button>
                             )
                         })
                     }
-                </>
+                </div>
             )}
             {successRequest && (
                 <>

@@ -13,11 +13,11 @@
     padding-bottom: 15%;
 }
 
-img {
+.hostFeedBackground img {
     width: 60vw;
 }
 
-h2{
+.hostFeedBackground h2{
     color: rgba(26, 26, 26, 0.8);
     text-shadow: 3px 3px 5px rgb(0, 0, 0, 0.3);
     margin: 2px;

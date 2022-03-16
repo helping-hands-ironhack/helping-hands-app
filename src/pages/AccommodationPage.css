@@ -1,0 +1,86 @@
+.accPageBackground {
+    background-color: #747c92;
+    background-image: linear-gradient( #747c92, #1a1a1a);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.accHeader {
+    width: 100vw;
+}
+
+.accPageBackground img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.accDescription {
+    width: 95%;
+}
+
+.descriptionContainer {
+    background-color: #747c92;
+    margin: 5%;
+    padding: 5%;
+    border-radius: 10px;
+}
+
+.requestBtn {
+    width: 50%;
+    background-color: #f96e46;
+    color: rgb(248, 247, 249);
+    border: 0;
+    border-radius: 10px;
+    font-weight: 700;
+    padding: 10px;
+    margin: 20px 0px;
+    font-size: 1.2rem;
+}
+
+.deleteRoom {
+    background-color: rgba(116, 124, 146, 0.5);
+}
+
+.availablePaxContainer {
+    margin: 5%;
+    margin-bottom: 20%;
+    background-color: rgba(26, 26, 26, 0.5);
+    padding: 5%;
+    border-radius: 10px;
+}
+
+.handleRequestBtn {
+    background: transparent;
+    border: none !important;
+    padding: 0;
+    width: 50%;
+}
+
+.accRooms{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.accRooms h3 {
+    margin: 10px;
+}
+
+.requestingPax {
+    margin-bottom: 20%;
+    width: 50%;
+}
+
+.requestingPax>div>div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.requestingPax>div>h4 {
+    margin-bottom: 0px;
+}

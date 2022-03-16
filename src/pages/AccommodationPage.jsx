@@ -7,6 +7,7 @@ import RequestHosting from "../components/RequestHosting";
 import { AuthContext } from "../context/auth.context";
 import AcceptRequestButton from "../components/AcceptRequestButton";
 import RejectRequestButton from "../components/RejectRequestButton";
+import './AccommodationPage.css'
 
 export default function AccommodationPage(props) {
 
@@ -55,51 +56,55 @@ export default function AccommodationPage(props) {
     }
 
     return (
-        <div>
-            <img src={accData.imageUrl} alt="" />
-            <h3>{accData.description}</h3>
-            <p>Rooms: {accData.rooms}</p>
-            <p>Capacity for {accData.capacity} pax</p>
-            {isOwner && <button onClick={handleDelete}>Delete accommodation</button>}
-            {isOwner && (accData.requests) && (accData.requests.length >0) && (!accData.isHosting) &&
-
-                <>
-                    <button onClick={toggleRequests}>Show requests</button>
-                    {showRequests &&
+        <div className="accPageBackground">
+            <div className="accHeader">
+                <img src={accData.imageUrl} alt="" />
+            </div>
+            <div className="accDescription">
+                <h1>{accData.description}</h1>
+                <div className="descriptionContainer">
+                    <p><strong>Rooms:</strong> {accData.rooms}</p>
+                    <p><strong>Capacity:</strong> {accData.capacity} pax</p>
+                </div>
+                <div className="accRooms">
+                    {isOwner && <button onClick={handleDelete} className='requestBtn deleteRoom' >Delete accommodation</button>}
+                    {isOwner && (accData.requests) && (accData.requests.length >0) && (!accData.isHosting) &&
                         <>
-                            <h2>Requested by:</h2>
+                            <button onClick={toggleRequests} className='requestBtn'>Show requests</button>
+                            {showRequests &&
+                                <>
+                                    <h3>Requested by:</h3>
+                                    <div className="requestingPax">
+                                        {accData.requests.map((req) => {
 
-                            {accData.requests.map((req) => {
+                                            return (
+                                                <div key={req._id}>
+                                                    <h4>{req.title}</h4>
+                                                    <div>
+                                                        <p>Adults: {req.adults}</p>
+                                                        <p>Children: {req.children}</p>
+                                                    </div>
+                                                    <>
+                                                        <AcceptRequestButton toggleRequests={toggleRequests} acc={accData} pax={req} />
+                                                        <RejectRequestButton toggleRequests={toggleRequests} acc={accData} pax={req} />
+                                                    </>
 
-                                return (
-                                    <div key={req._id}>
-                                        <h3>{req.title}</h3>
-                                        <p>Adults: {req.adults}</p>
-                                        <p>Children: {req.children}</p>
-                                        <>
-                                            <AcceptRequestButton toggleRequests={toggleRequests} acc={accData} pax={req} />
-                                            <RejectRequestButton toggleRequests={toggleRequests} acc={accData} pax={req} />
-                                        </>
-
+                                                </div>
+                                            )
+                                        })}
                                     </div>
-                                )
+                                </>
                             }
-                            )
-                            }
-
                         </>
-
-
-
                     }
-                </>
-            }
-            {accData.isHosting &&
-                <>
-                    <p>This accomodation is already hosting!</p>
-                </>
-            }
-            {isNgo && <RequestHosting accommodation={accData} />}
+                </div>
+                {accData.isHosting &&
+                    <>
+                        <p>We are sorry, this accomodation is already hosting.</p>
+                    </>
+                }
+                {isNgo && !accData.isHosting && <RequestHosting accommodation={accData} />}
+            </div>
         </div>
     )
 }
