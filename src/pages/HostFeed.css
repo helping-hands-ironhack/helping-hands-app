@@ -1,0 +1,26 @@
+.hostFeedBackground {
+    background-color: #747c92;
+    background-image: linear-gradient( #747c92, #1a1a1a);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    padding-top: 15%;
+    padding-bottom: 15%;
+}
+
+img {
+    width: 60vw;
+}
+
+h2{
+    color: rgba(26, 26, 26, 0.8);
+    margin: 2px;
+}
+
+.errorMsg {
+    margin-top: 0px;
+}
