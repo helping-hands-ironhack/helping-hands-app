@@ -44,6 +44,10 @@ export default function AccommodationPage(props) {
             .then((__) => navigate(`/users/${props.user._id}`))
     }
 
+    function toggleRequests(){
+        showRequests?setShowRequests(false):setShowRequests(true)
+    }
+
     return (
         <div>
             <img src={accData.imageUrl} alt="" />
@@ -54,7 +58,7 @@ export default function AccommodationPage(props) {
             {isOwner && (accData.requests) && (!accData.isHosting) &&
 
                 <>
-                    <button onClick={setShowRequests(true)}>Show requests</button>
+                    <button onClick={toggleRequests}>Show requests</button>
                     {showRequests &&
                         <>
                             <h2>Requested by:</h2>
