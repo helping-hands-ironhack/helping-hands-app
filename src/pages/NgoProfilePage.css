@@ -1,0 +1,120 @@
+.ngoProfileBackground {
+    background-color: #747c92;
+    background-image: linear-gradient( #ff8c61, #f96e46);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.ngoProfileDiv {
+    padding: 15% 0% 7% 0%;
+    background-image: 
+    linear-gradient( rgba(247, 247, 247, 0.9), rgba(224, 221, 219, 0.95));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.ngoProfileDiv h1, .ngoProfileDiv a, .ngoProfileDiv p {
+    color: #1a1a1a;
+    font-weight: 200;
+}
+
+.ngoProfileDiv h1 {
+    text-shadow: 3px 3px 5px rgb(0, 0, 0, 0.3);
+    margin-top: 10px;
+}
+
+.ngoProfileDiv>p {
+    margin-bottom: 0px;
+}
+
+.ngoProfileDiv img {
+    border-radius: 50%;
+    background-color: #f7f8f9;
+    object-fit: cover;
+    width: 50vw;
+}
+
+.ngoDescription {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ngoDescription p {
+    width: 80%;
+}
+
+.paxContainer {
+    margin-bottom: 20%;
+}
+
+.paxContainer>h2 {
+    font-weight: 200;
+    text-shadow: 2px 2px 3px rgb(0, 0, 0, 0.3);
+}
+
+.paxList{
+    background-color: rgba(247, 248, 249, 0.1);
+    box-shadow: 3px 3px 20px rgb(0, 0, 0, 0.3);
+    margin: 5% 5% 10% 5%;
+    border-radius: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.PaxCard {
+    display: flex;
+    flex-direction: column;
+    background-color: #f7f8f9;
+    border-radius: 10px;
+    width: 90%;
+    margin: 10px;
+}
+
+.PaxCard>h4, .PaxCard p {
+    color:#1a1a1a;
+    margin: 10px;
+}
+
+.PaxCard>div {
+    display: flex;
+    justify-content: space-around;
+}
+
+.PaxCreate {
+    margin: 5%;
+    background-color: rgba(26, 26, 26, 0.1);
+    border-radius: 10px;
+    padding: 5%;
+}
+
+.PaxCreate>h2 {
+    margin: 0;
+}
+
+.PaxCreate>form {
+    display: flex;
+    flex-direction: column;
+}
+
+.PaxCreate button.button__submit {
+    width: 50%;
+    background-color: #747c92;
+    color: rgb(248, 247, 249);
+    border: 0;
+    border-radius: 10px;
+    font-weight: 700;
+    padding: 10px;
+    margin: 20px 0px;
+    font-size: 1.2rem;
+  }

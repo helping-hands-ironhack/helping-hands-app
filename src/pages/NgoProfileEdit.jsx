@@ -47,55 +47,67 @@ export default function NgoProfileEdit(props) {
     }
 
     return (
-        <div>
-            <h1>Edit Your Ngo</h1>
-            <form onSubmit={handleEditSubmit} className="auth__form">
-                <label htmlFor="input-name">Name:</label>
-                <input
-                    id="input-name"
-                    type="text"
-                    name="name"
-                    value={name}
-                    onChange={handleName}
-                    required
-                />
-
-                <label htmlFor="input-email">Email:</label>
-                <input
-                    id="input-email"
-                    type="email"
-                    name="email"
-                    value={email}
-                    onChange={handleEmail}
-                    required
-                />
-
-                <label htmlFor="input-cif">CIF:</label>
-                <input
-                    id="input-cif"
-                    type="text"
-                    name="cif"
-                    value={cif}
-                    onChange={handleCif}
-                    required
-                />
-
-                <input type="file" onChange={(e) => handleFileUpload(e, setImageUrl)} />
-                {imageUrl && (
-                    <>
-                        <img src={imageUrl} alt="image" />
-                    </>
-                )}
-
-                {errorMessage && (
-                    <div className="error-block">
-                        <p>There was an error submiting the form:</p>
-                        <p>{errorMessage}</p>
+        <div className="formBackground">
+            <div className="formContainer">
+                <h1>Edit your profile</h1>
+                <form onSubmit={handleEditSubmit} className="signup__form">
+                    <div className="labelInput">
+                        <label htmlFor="input-name">Name:</label>
+                        <input
+                            id="input-name"
+                            type="text"
+                            name="name"
+                            value={name}
+                            onChange={handleName}
+                            required
+                        />
                     </div>
-                )}
 
-                <button className="button__submit" type="submit">Modify</button>    
-            </form>
+                    <div className="labelInput">
+                        <label htmlFor="input-email">Email:</label>
+                        <input
+                            id="input-email"
+                            type="email"
+                            name="email"
+                            value={email}
+                            onChange={handleEmail}
+                            required
+                        />
+                    </div>
+
+                    <div className="labelInput">
+                        <label htmlFor="input-cif">CIF:</label>
+                        <input
+                            id="input-cif"
+                            type="text"
+                            name="cif"
+                            value={cif}
+                            onChange={handleCif}
+                            required
+                        />
+                    </div>
+
+                    <div className="labelInput">
+                        <input type="file" onChange={(e) => handleFileUpload(e, setImageUrl)} />
+                        {imageUrl && (
+                            <>
+                                <img src={imageUrl} alt="image" />
+                            </>
+                        )}
+                    </div>
+
+                    {errorMessage && (
+                        <div className="error-block">
+                            <p>There was an error submiting the form:</p>
+                            <p>{errorMessage}</p>
+                        </div>
+                    )}
+                    
+                    <div className="buttonSubmit">
+                        <button className="button__submit" type="submit">Modify</button>    
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }

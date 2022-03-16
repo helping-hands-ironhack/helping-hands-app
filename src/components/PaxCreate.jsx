@@ -22,41 +22,48 @@ export default function PaxCreate(props) {
             setTitle("")
             setAdults(0);
             setChildren(0);
-            props.updateNgo()
+            props.updateNgo();
           })
           .catch((error) => console.log(error));
     }
 
     return (
         <div className="PaxCreate">
-            <h3>Pax to host:</h3>
-
+          <h2>Add a new pax</h2>
             <form onSubmit={handleSubmit}>
-            <label>Title or description:</label>    
-            <input
-              type="text"
-              name="title"
-              value={title}            
-              onChange={(event) => setTitle(event.target.value)}
-            />
+              <div className="labelInput">
+                <label>Title or description:</label>    
+                <input
+                  type="text"
+                  name="title"
+                  value={title}            
+                  onChange={(event) => setTitle(event.target.value)}
+                />
+              </div>
 
-            <label>Adults:</label>    
-            <input
-              type="number"
-              name="adults"
-              value={adults}            
-              onChange={(event) => setAdults(event.target.value)}
-            />
+              <div className="labelInput">
+                <label>Adults:</label>    
+                <input
+                  type="number"
+                  name="adults"
+                  value={adults}            
+                  onChange={(event) => setAdults(event.target.value)}
+                />
+              </div>
 
-            <label>Children:</label>    
-            <input
-              type="number"
-              name="children"
-              value={children}            
-              onChange={(event) => setChildren(event.target.value)}
-            />  
+              <div className="labelInput">
+                <label>Children:</label>    
+                <input
+                  type="number"
+                  name="children"
+                  value={children}            
+                  onChange={(event) => setChildren(event.target.value)}
+                />  
+              </div>
 
-            <button type="submit">Add Movidas</button>
+              <div className="buttonSubmit">
+                <button type="submit" className="button__submit">Create</button>
+              </div>
             </form>
         </div>
     )
