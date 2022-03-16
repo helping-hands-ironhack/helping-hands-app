@@ -12,7 +12,7 @@ export default function AccommodationCard({accommodation}){
         // .get(`${process.env.REACT_APP_SERVER_URL}/users/${id}`)
 
     return(
-        <Link to={`/accommodations/${accommodation._id}`}>
+        <Link to={`/accommodation/${accommodation._id}`}>
             <div className="listTitle">
                 <h3>{accommodation.description}</h3>
             </div>
