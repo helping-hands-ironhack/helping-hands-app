@@ -16,7 +16,7 @@ export default function NgoSignup(props){
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [cif, setCif] = useState('');
-  const [submit, setSubmit] = useState(false);
+  // const [submit, setSubmit] = useState(false);
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   let navigate = useNavigate();
@@ -32,20 +32,20 @@ export default function NgoSignup(props){
 
     axios
     .post(`${API_URL}/auth/ngo/signup`, requestBody)
-    .then(() => navigate())
+    .then(() => navigate('/auth/login'))
     .catch((error) => {
       const errorDescription = error.response.data.message;
       setErrorMessage(errorDescription);
     })
 
-    setSubmit(true);
+   // setSubmit(true);
   };
 
-useEffect(() => {
+/* useEffect(() => {
   if(submit) {
     navigate('/auth/login')
   }
-},);
+},); */
 
   return(
     <div className="formBackground">
