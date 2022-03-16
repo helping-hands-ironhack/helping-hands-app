@@ -12,15 +12,17 @@ export default function AccommodationCard({accommodation}){
         // .get(`${process.env.REACT_APP_SERVER_URL}/users/${id}`)
 
     return(
-        
-        <div>
-        <Link to={`/users/${accommodation.owner._id}`}>Host owner o alguna mierda</Link>    
-        <div>
-            <Link to={`/accommodation/${accommodation._id}`}>
-                <h2>{accommodation.description}</h2>
+        <Link to={`/accommodations/${accommodation._id}`}>
+            <div className="listTitle">
+                <h3>{accommodation.description}</h3>
+            </div>
+            <div className="listCard">
                 <img src={accommodation.imageUrl} alt=''/>
-            </Link>                
-        </div>
-        </div>
+                <div>
+                <p><strong>Rooms:</strong> {accommodation.rooms}</p>
+                <p><strong>Capacity: </strong>{accommodation.capacity} pax</p>
+                </div>
+            </div>
+        </Link>
     );
 };
