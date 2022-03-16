@@ -1,14 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import PaxCreate from "../components/PaxCreate";
 import PaxCard from "../components/PaxCard";
 import NgoProfileEdit from "./NgoProfileEdit";
+import './NgoProfilePage.css';
+import { AuthContext } from "../context/auth.context";
 
 export default function NgoProfile(props) {
+  const {user} = useContext(AuthContext);
   const [ngo, setNgo] = useState("");
   const [pax, setPax] = useState("");
   const { id } = useParams();
+
+  const isOwner = user._id === id;
 
   function getNgo() {
     axios
@@ -24,17 +29,20 @@ export default function NgoProfile(props) {
   }, []);
 
   return (
-    <div className="NgoProfile">
+    <div className="ngoProfileBackground">
             {ngo && (
-                <>
-                  <h1>{ngo.name}</h1>
-                  <p>{ngo.cif}</p>
-                  <p>{ngo.email}</p>
-                  <img src={ngo.imageUrl} alt=""/>
-                </>
+              <div className="profileDiv">
+                <h1>{ngo.name}</h1>
+                <img src={ngo.imageUrl} alt=""/>
+                <p>{ngo.email}</p>
+              </div>
+
+              {isOwner && (
+                
+                <Link to={`/ngo/${id}/edit`}>✏</Link>
+              )}
             )}
 
-            <Link to={`/ngo/${id}/edit`}>✏</Link>
             
             <PaxCreate updateNgo={getNgo} />
 

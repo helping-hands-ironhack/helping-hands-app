@@ -1,0 +1,10 @@
+.ngoProfileBackground {
+    background-color: #747c92;
+    background-image: linear-gradient( #ff8c61, #f96e46);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
