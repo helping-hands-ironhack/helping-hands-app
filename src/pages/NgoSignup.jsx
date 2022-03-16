@@ -16,7 +16,7 @@ export default function NgoSignup(props){
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [cif, setCif] = useState('');
-  // const [submit, setSubmit] = useState(false);
+  const [submit, setSubmit] = useState(false);
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   let navigate = useNavigate();
@@ -38,14 +38,14 @@ export default function NgoSignup(props){
       setErrorMessage(errorDescription);
     })
 
-   // setSubmit(true);
+   setSubmit(true);
   };
 
-/* useEffect(() => {
+useEffect(() => {
   if(submit) {
     navigate('/auth/login')
   }
-},); */
+},);
 
   return(
     <div className="formBackground">
