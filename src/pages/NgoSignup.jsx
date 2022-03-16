@@ -7,7 +7,7 @@ import axios from 'axios';
 import * as PATHS from "../utils/paths";
 import * as USER_HELPERS from "../utils/userToken";
 import './auth.css';
-const API_URL = 'http://localhost:5005';
+const API_URL = process.env.REACT_APP_SERVER_URL;
 
 
 export default function NgoSignup(props){
@@ -31,7 +31,7 @@ export default function NgoSignup(props){
     const requestBody = {name, cif, email, password}
 
     axios
-    .post(`${API_URL}/api/auth/ngo/signup`, requestBody)
+    .post(`${API_URL}/auth/ngo/signup`, requestBody)
     .then(() => navigate())
     .catch((error) => {
       const errorDescription = error.response.data.message;

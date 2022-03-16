@@ -7,8 +7,9 @@ import axios from 'axios';
 import * as PATHS from "../utils/paths";
 import * as USER_HELPERS from "../utils/userToken";
 import { logout } from "../services/auth";
-import './auth.css';
-const API_URL = 'http://localhost:5005';
+
+const API_URL = process.env.REACT_APP_SERVER_URL;
+
 
 
 export default function HostEditPage(props) {
@@ -31,7 +32,7 @@ export default function HostEditPage(props) {
         const requestBody = { firstName, lastName, email, picture: imageUrl }
 
         axios
-            .put(`${API_URL}/api/users/${props.user._id}`, requestBody)
+            .put(`${API_URL}/users/${props.user._id}`, requestBody)
             .then((__) => navigate(`/auth/login`))
             .catch((error) => {
                 const errorDescription = error.response.data.message;
@@ -54,6 +55,7 @@ export default function HostEditPage(props) {
     }
 
     return (
+<<<<<<< HEAD
         <div className="formBackground">
             <div className="formContainer">
                 <h1>Edit your profile</h1>
@@ -68,6 +70,52 @@ export default function HostEditPage(props) {
                             onChange={handlefirstName}
                             required
                         />
+=======
+        <div>
+            <h1>Edit your profile</h1>
+            <form onSubmit={handleSignupSubmit} className="auth__form">
+                <label htmlFor="input-firstName">First name:</label>
+                <input
+                    id="input-firstName"
+                    type="text"
+                    name="firstName"
+                    value={firstName}
+                    onChange={handlefirstName}
+                    required
+                />
+
+                <label htmlFor="input-lastName">Last name:</label>
+                <input
+                    id="input-lastName"
+                    type="text"
+                    name="lastName"
+                    value={lastName}
+                    onChange={handleLastName}
+                    required
+                />
+
+                <label htmlFor="input-email">Your email:</label>
+                <input
+                    id="input-email"
+                    type="text"
+                    name="email"
+                    value={email}
+                    onChange={handleEmail}
+                    required
+                />
+                <input type="file" onChange={(e) => handleFileUpload(e, setImageUrl)} />
+                {imageUrl && (
+                    <>
+                        <img src={imageUrl} alt="eeee" />
+                    </>
+                )}
+
+
+                {errorMessage && (
+                    <div className="error-block">
+                        <p>There was an error submiting the form:</p>
+                        <p>{errorMessage}</p>
+>>>>>>> a3c3411c829384b3c20a1405d61c32e44e838d2f
                     </div>
 
                     <div className="labelInput">
