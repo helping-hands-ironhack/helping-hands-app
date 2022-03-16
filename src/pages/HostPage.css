@@ -1,3 +1,114 @@
-img{
-    width: 30vw;
+.userProfileBackground {
+    background-color: #747c92;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.profileDiv {
+    padding: 15% 5% 7% 5%;
+    background-image: 
+    linear-gradient( rgba(249, 110, 70, 0.9), rgba(255, 140, 97, 0.95)),
+    url('../desert.jpg');
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profileDiv h1 {
+    font-weight: 200;
+    text-shadow: 3px 3px 5px rgb(0, 0, 0, 0.3);
+}
+
+.profileDiv img {
+    border-radius: 50%;
+    background-color: #f7f8f9;
+    object-fit: cover;
+    width: 50vw;
+}
+
+.editProfile{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 50%;
+}
+
+.editProfile a {
+    text-decoration: none;
+    color: #f7f8f9;
+}
+
+.editProfile button {
+    color: #f96e46;
+    background-color: #f7f8f9;
+    border-radius: 5px;
+    border: 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.accommodationsContainer {
+    background-image: linear-gradient( #747c92, #1a1a1a);
+}
+
+.accommodationsContainer h2 {
+    margin-bottom: 30px;
+}
+
+.accommodationsContainer>a {
+    text-decoration: none;
+    background-color: #f96e46;
+    color: #f7f8f9;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 700;
+}
+
+.acccommodations-list {
+    background-color: rgba(247, 248, 249, 0.1);
+    box-shadow: 3px 3px 20px rgb(0, 0, 0, 0.3);
+    margin: 10% 5% 15% 5%;
+    border-radius: 10px;
+    padding-top: 5px;
+}
+
+.listTitle {
+    background: rgba(116, 124, 146, 0.1);
+    color: rgba(26, 26, 26, 0.8);
+}
+
+.listCard {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.listCard img {
+    object-fit: cover;
+    width: 50%;
+}
+
+.listCard div {
+    width: 50%;
+}
+
+.listCard p {
+    color: rgba(26, 26, 26, 0.8);
+    text-align: left;
+    margin: 5px 10px;
+}
+
+.acccommodations-list>a {
+    display: flex;
+    flex-direction: column;
+    background-color: #f7f8f9;
+    box-shadow: 3px 3px 20px rgb(0, 0, 0, 0.3);
+    margin: 15px;
+    border-radius: 10px;
+    text-decoration: none;
 }

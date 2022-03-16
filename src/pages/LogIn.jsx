@@ -28,7 +28,7 @@ export default function LogIn(props){
   return(
     <div className="formBackground">
       <div className="formContainer">
-        <h1>Log In</h1>
+        <h1>Log in</h1>
         <form onSubmit={handleLoginSubmit} className="signup__form">
           <div className="labelInput">
             <label htmlFor="input-email">Email:</label>
@@ -68,6 +68,10 @@ export default function LogIn(props){
             </button>
           </div>
         </form>
+      </div>
+      <div className="changePage">
+        <p>Not registered yet?</p>
+        <Link to='/auth/signup'>Sign up</Link>
       </div>
     </div>
   );
