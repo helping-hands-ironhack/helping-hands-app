@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import AccommodationCard from "../components/AccommodationCard";
-import { Link } from "react-router-dom";
 import './NgoFeed.css';
 
 export default function NgoFeed(){

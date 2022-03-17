@@ -2,7 +2,6 @@ import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import LoadingComponent from "./Loading";
 import '../pages/HostFeed.css';
 
 export default function RequestsForHost(props) {

@@ -3,7 +3,6 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import PaxCreate from "../components/PaxCreate";
 import PaxCard from "../components/PaxCard";
-import NgoProfileEdit from "./NgoProfileEdit";
 import './NgoProfilePage.css';
 import { AuthContext } from "../context/auth.context";
 

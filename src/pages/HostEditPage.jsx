@@ -1,12 +1,8 @@
 import React, { useState, useContext } from "react";
-import { signup } from "../services/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import "./auth.css";
 import axios from 'axios';
-import * as PATHS from "../utils/paths";
-import * as USER_HELPERS from "../utils/userToken";
-import { logout } from "../services/auth";
 
 const API_URL = process.env.REACT_APP_SERVER_URL;
 
