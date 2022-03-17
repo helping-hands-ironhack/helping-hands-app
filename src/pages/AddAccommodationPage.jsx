@@ -3,8 +3,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import '../pages/auth.css';
 
-
-
 export default function AddAccommodation(props) {
     const [errorMessage, setErrorMessage] = useState(undefined);
     const [description, setDescription] = useState("");

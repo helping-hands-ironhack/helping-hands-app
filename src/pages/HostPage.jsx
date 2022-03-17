@@ -4,8 +4,6 @@ import axios from "axios";
 import "./HostPage.css"
 import { Link } from "react-router-dom";
 import AccommodationsFeed from "../components/AccommodationsFeed";
-import { AuthContext } from "../context/auth.context";
-
 
 export default function HostPage(props){
     const [userData, setUserData] = useState("")
