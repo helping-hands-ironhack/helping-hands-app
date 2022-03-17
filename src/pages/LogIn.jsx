@@ -1,10 +1,5 @@
 import React, { useContext, useState } from "react";
-import axios from 'axios';
-import { login } from "../services/auth";
 import { Link, useNavigate } from "react-router-dom";
-//import "./Signup";
-import * as PATHS from "../utils/paths";
-import * as USER_HELPERS from "../utils/userToken";
 import { AuthContext } from "../context/auth.context";
 import './auth.css';
 

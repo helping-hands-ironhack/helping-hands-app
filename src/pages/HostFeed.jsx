@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useState, useContext } from "react";
 import NgoCard from "../components/NgoCard";
 import RequestsForHost from "../components/RequestsForHost";
-import { AuthContext } from "../context/auth.context";
 import './HostFeed.css';
 
 export default function HostFeed() {

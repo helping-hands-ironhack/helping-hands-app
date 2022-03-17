@@ -1,5 +1,4 @@
 export default function PaxCard({ title, adults, children, isRequested }) {
-    console.log(title);
     return (
         <div className="PaxCard">
             <h4>{title}</h4>
