@@ -1,7 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { AuthContext } from "../context/auth.context";
 
 export default function PaxCreate(props) {
 

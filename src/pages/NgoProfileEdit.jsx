@@ -5,7 +5,6 @@ import axios from "axios";
 
 export default function NgoProfileEdit(props) {
     const {logOutNgo} = useContext(AuthContext);
-
     const {id} = useParams();
 
     const [email, setEmail] = useState(props.email);
