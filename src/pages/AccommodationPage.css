@@ -84,3 +84,7 @@
 .requestingPax>div>h4 {
     margin-bottom: 0px;
 }
+
+.alreadyReqMsg{
+    margin-bottom: 20%;
+}

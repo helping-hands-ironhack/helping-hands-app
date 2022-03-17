@@ -39,6 +39,7 @@
     background-color: #f7f8f9;
     object-fit: cover;
     width: 50vw;
+    height: 50vw;
 }
 
 .ngoDescription {

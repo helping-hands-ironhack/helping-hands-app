@@ -100,7 +100,7 @@ export default function AccommodationPage(props) {
                 </div>
                 {accData.isHosting &&
                     <>
-                        <p>We are sorry, this accomodation is already hosting.</p>
+                        <p className="alreadyReqMsg">We are sorry, this accomodation is already hosting.</p>
                     </>
                 }
                 {isNgo && !accData.isHosting && <RequestHosting accommodation={accData} />}

@@ -97,7 +97,7 @@ export default function AddAccommodation(props) {
                         <input type="file" onChange={(e) => handleFileUpload(e, setImageUrl)} multiple/>
                         {imageUrl &&(
                         <>
-                            <img src={imageUrl} alt="profile" />
+                            <img src={imageUrl} alt="profile" style={{'max-width': '40vw'}}/>
                         </>
                         )}
                     </div>

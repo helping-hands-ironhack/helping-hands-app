@@ -76,7 +76,7 @@ export default function RequestHosting(props) {
             )}
             {successRequest && (
                 <>
-                    <p>Your request has been sent!</p>
+                    <p className="alreadyReqMsg">Your request has been sent!</p>
                 </>
             )}
         </div>
