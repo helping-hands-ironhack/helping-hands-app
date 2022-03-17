@@ -8,7 +8,9 @@ export default function AccommodationCard({ngo}){
         <Link to={`/ngo/${ngo._id}`}>
             <div className="card">
                 <h2>{ngo.name}</h2>
-                <img className="img" src={ngo.imageUrl} alt=''/>
+                <div>
+                    <img className="img" src={ngo.imageUrl} alt=''/>
+                </div>
             </div>
         </Link>
         </div>

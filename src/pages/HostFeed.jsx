@@ -22,9 +22,11 @@ export default function HostFeed() {
         <div className="hostFeedBackground">
             <RequestsForHost />
             <h1>Browse all registered NGOs:</h1>
-            {ngos.map((ngo) => (
-                <NgoCard key={ngo._id} ngo={ngo} />
-            ))}
+            <div className="hostFNgoContainer">
+                {ngos.map((ngo) => (
+                    <NgoCard key={ngo._id} ngo={ngo} />
+                ))}
+            </div>
         </div>
     );
 };

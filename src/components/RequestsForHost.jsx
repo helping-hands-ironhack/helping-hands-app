@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import '../pages/HostFeed.css';
 
 export default function RequestsForHost(props) {
     const { user, authenticateUser } = useContext(AuthContext)
@@ -30,7 +31,7 @@ export default function RequestsForHost(props) {
         <div>
             {
                 (user) && (accData) && (accData.length > 0) &&
-                <div>
+                <div className="hostFRequestsContainer">
                     <h1>You have {accData.length} requests!</h1>
                     {
                         accData.map((acc) => {
