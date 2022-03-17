@@ -67,10 +67,11 @@ export default function AccommodationPage(props) {
                     <p><strong>Capacity:</strong> {accData.capacity} pax</p>
                 </div>
                 <div className="accRooms">
-                    {isOwner && <button onClick={handleDelete} className='requestBtn deleteRoom' >Delete accommodation</button>}
+                    {isOwner && (!accData.requests) && <button onClick={handleDelete} className='requestBtn deleteRoom' style={{'margin-bottom': '20%'}} >Delete accommodation</button>}
+                    {isOwner && (accData.requests) && <button onClick={handleDelete} className='requestBtn deleteRoom'>Delete accommodation</button>}
                     {isOwner && (accData.requests) && (accData.requests.length >0) && (!accData.isHosting) &&
                         <>
-                            <button onClick={toggleRequests} className='requestBtn'>Show requests</button>
+                            {!showRequests && <button onClick={toggleRequests} className='requestBtn' style={{'margin-bottom':'20%'}}>Show requests</button>}
                             {showRequests &&
                                 <>
                                     <h3>Requested by:</h3>
@@ -80,14 +81,14 @@ export default function AccommodationPage(props) {
                                             return (
                                                 <div key={req._id}>
                                                     <h4>{req.title}</h4>
-                                                    <div>
+                                                    <div className="requestInfobody">
                                                         <p>Adults: {req.adults}</p>
                                                         <p>Children: {req.children}</p>
                                                     </div>
-                                                    <>
+                                                    <div className="acceptReject">
                                                         <AcceptRequestButton toggleRequests={toggleRequests} acc={accData} pax={req} />
                                                         <RejectRequestButton toggleRequests={toggleRequests} acc={accData} pax={req} />
-                                                    </>
+                                                    </div>
 
                                                 </div>
                                             )

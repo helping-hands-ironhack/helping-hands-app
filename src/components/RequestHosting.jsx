@@ -56,9 +56,9 @@ export default function RequestHosting(props) {
 
     return (
         <div>
-            <button className="requestBtn" onClick={toggleRequesting}>
+            {!isRequesting && !successRequest && <button className="requestBtn" onClick={toggleRequesting} style={{'margin-bottom':'20%'}}>
                 Request hosting
-            </button>
+            </button>}
             {isRequesting && (
                 <div className="availablePaxContainer">
                     <p>Select the group of pax</p>
@@ -75,9 +75,14 @@ export default function RequestHosting(props) {
                 </div>
             )}
             {successRequest && (
-                <>
-                    <p className="alreadyReqMsg">Your request has been sent!</p>
-                </>
+                <div>
+                    <button className="requestBtn" onClick={toggleRequesting}>
+                    Request hosting
+                    </button>
+                    <>
+                        <p className="alreadyReqMsg">Your request has been sent!</p>
+                    </>
+                </div>
             )}
         </div>
 

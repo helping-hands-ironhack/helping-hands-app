@@ -13,7 +13,7 @@
     padding-bottom: 15%;
 }
 
-.hostFeedBackground img {
+.hostFeedBackground>img {
     width: 60vw;
 }
 
@@ -23,11 +23,36 @@
     margin: 2px;
 }
 
+.hostFeedBackground>h1 {
+    font-weight: 200;
+}
+
 .errorMsg {
     margin-top: 0px;
 }
 
 .hostFRequestsContainer {
+    margin: 5%;
+    background-color: rgba(255, 140, 97, 0.6);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.hostFRequestsContainer a {
+    text-decoration: none;
+    color: #f7f8f9;
+}
+
+.hostFNgoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 90%;
-    background-color: #f7f8f9;
+    background-color: rgba(247, 248, 249, 0.1);
+    box-shadow: 3px 3px 20px rgb(0, 0, 0, 0.3);
+    margin: 3%;
+    border-radius: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
