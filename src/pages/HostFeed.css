@@ -26,3 +26,8 @@
 .errorMsg {
     margin-top: 0px;
 }
+
+.hostFRequestsContainer {
+    width: 90%;
+    background-color: #f7f8f9;
+}
